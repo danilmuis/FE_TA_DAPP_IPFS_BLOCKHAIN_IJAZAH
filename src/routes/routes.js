@@ -12,6 +12,7 @@ import Transkrip from "@/pages/InputTranskripForm.vue";
 
 import MainNavbar from "@/pages/MainNavbar.vue";
 import Main2 from "@/pages/Main2.vue";
+import CheckDocument from "@/pages/CheckDocument.vue";
 const routes = [
   {
     path: "/",
@@ -74,6 +75,13 @@ const routes = [
     path: "/mdm",
     name: "mdm",
     component: Main2
+    
+  },
+  {
+    
+    path: "/checker",
+    name: "Check Document",
+    component: CheckDocument
     
   }
 ];

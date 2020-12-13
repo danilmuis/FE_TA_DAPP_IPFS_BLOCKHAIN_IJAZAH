@@ -31,7 +31,7 @@ import MaterialDashboard from "./material-dashboard";
 
 import Chartist from "chartist";
 import {Plugin} from "vue-fragment";
-
+import 'vue2-dropzone/dist/vue2Dropzone.min.css'
 // configure router
 const router = new VueRouter({
   routes, // short for routes: routes

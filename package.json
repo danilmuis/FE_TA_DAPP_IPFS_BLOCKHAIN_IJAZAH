@@ -14,6 +14,7 @@
     "core-js": "3.6.4",
     "dotenv": "^8.2.0",
     "google-maps": "4.2.3",
+    "ngx-dropzone-wrapper": "^10.0.1",
     "stats-js": "^1.0.1",
     "vue": "2.6.11",
     "vue-clickaway": "2.2.2",
@@ -21,7 +22,8 @@
     "vue-github-buttons": "3.1.0",
     "vue-material": "1.0.0-beta-11",
     "vue-router": "3.1.6",
-    "vue-social-sharing": "2.4.7"
+    "vue-social-sharing": "2.4.7",
+    "vue2-dropzone": "^3.6.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "4.2.3",
