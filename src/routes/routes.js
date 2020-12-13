@@ -10,12 +10,15 @@ import Notifications from "@/pages/Notifications.vue";
 import UpgradeToPRO from "@/pages/UpgradeToPRO.vue";
 import Transkrip from "@/pages/InputTranskripForm.vue";
 
+import MainNavbar from "@/pages/MainNavbar.vue";
+import Main2 from "@/pages/Main2.vue";
 const routes = [
   {
     path: "/",
     component: DashboardLayout,
     redirect: "/dashboard",
     children: [
+      
       {
         path: "dashboard",
         name: "Dashboard",
@@ -65,7 +68,18 @@ const routes = [
         component: Transkrip
       }
     ]
+  },
+  {
+    
+    path: "/mdm",
+    name: "mdm",
+    component: Main2
+    
   }
 ];
 
 export default routes;
+
+
+
+process.env.VUE_APP_ENDPOINT_API
