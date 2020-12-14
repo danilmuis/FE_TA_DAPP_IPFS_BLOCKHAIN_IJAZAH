@@ -7,35 +7,35 @@
       :sidebar-background-image="sidebarBackgroundImage"
     >
       <mobile-menu slot="content"></mobile-menu>
-      <sidebar-link to="/dashboard">
+      <sidebar-link to="/">
         <md-icon>dashboard</md-icon>
         <p>Dashboard</p>
       </sidebar-link>
-      <sidebar-link to="/ijazah">
+      <sidebar-link to="/admin/ijazah">
         <md-icon>description</md-icon>
         <p>Membuat Ijazah Baru</p>
       </sidebar-link>
-      <sidebar-link to="/transkrip">
+      <sidebar-link to="/admin/transkrip">
         <md-icon>description</md-icon>
         <p>Membuat Transkrip Baru</p>
       </sidebar-link>
-      <sidebar-link to="/table">
+      <sidebar-link to="/admin/table">
         <md-icon>content_paste</md-icon>
         <p>Table list</p>
       </sidebar-link>
-      <sidebar-link to="/typography">
+      <sidebar-link to="/admin/typography">
         <md-icon>library_books</md-icon>
         <p>Typography</p>
       </sidebar-link>
-      <sidebar-link to="/icons">
+      <sidebar-link to="/admin/icons">
         <md-icon>bubble_chart</md-icon>
         <p>Icons</p>
       </sidebar-link>
-      <sidebar-link to="/maps">
+      <sidebar-link to="/admin/maps">
         <md-icon>location_on</md-icon>
         <p>Maps</p>
       </sidebar-link>
-      <sidebar-link to="/notifications">
+      <sidebar-link to="/admin/notifications">
         <md-icon>notifications</md-icon>
         <p>Notifications</p>
       </sidebar-link>

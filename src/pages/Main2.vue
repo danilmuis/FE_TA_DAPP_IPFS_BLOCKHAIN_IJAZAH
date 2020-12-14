@@ -14,7 +14,7 @@
 
                                 </div>
                                 <div class="col-md-6  img2 img-responsive">
-                                    <a href="/stakeholder"><img src="../../src/assets/img/stakeholder.png" alt="stakeholder"
+                                    <a href="/checker"><img src="../../src/assets/img/stakeholder.png" alt="stakeholder"
                                             width="150"></a>
 
                                 </div>

@@ -34,6 +34,7 @@ import {Plugin} from "vue-fragment";
 import 'vue2-dropzone/dist/vue2Dropzone.min.css'
 // configure router
 const router = new VueRouter({
+  mode: 'history',
   routes, // short for routes: routes
   linkExactActiveClass: "nav-item active"
 });

@@ -11,6 +11,20 @@ export const getIjazah  = ()=> {
             });
     }); 
 }
+export const getFile  = (hash)=> {
+    let formData = new FormData();
+    formData.append("arg",hash)
+    return new Promise((resolve, reject) => {
+        axios
+            .post(process.env.VUE_APP_ENDPOINT_IPFS+`/cat`,formData)
+            .then(response => {
+                resolve(response.data);
+            })
+            .catch(errors => {
+                reject(errors.response.data);
+            });
+    }); 
+}
 
 export const sendIjazah  = (data)=> {
     console.log(process.env.VUE_APP_ENDPOINT_API);

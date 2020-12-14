@@ -15,9 +15,9 @@ import Main2 from "@/pages/Main2.vue";
 import CheckDocument from "@/pages/CheckDocument.vue";
 const routes = [
   {
-    path: "/",
+    path: "/admin",
     component: DashboardLayout,
-    redirect: "/dashboard",
+    redirect: "/admin/ijazah",
     children: [
       
       {
@@ -72,7 +72,7 @@ const routes = [
   },
   {
     
-    path: "/mdm",
+    path: "/",
     name: "mdm",
     component: Main2
     

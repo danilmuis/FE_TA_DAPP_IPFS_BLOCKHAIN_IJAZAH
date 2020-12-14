@@ -4,7 +4,7 @@
         <div class="container">
         <div class="row">
         <div class="col-md-6" style="text-align:left;">
-                    <img src="../../src/assets/img/ristekdikti.png" alt="Ristek Dikti" style="margin-top:50px;width:150px;">
+                    <a href="/"><img src="../../src/assets/img/ristekdikti.png" alt="Ristek Dikti" style="margin-top:50px;width:150px;"></a>
                     <h1
                         style="color: #fff;font-weight: 500;font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
                         SIVIL-CHAIN</h1>
