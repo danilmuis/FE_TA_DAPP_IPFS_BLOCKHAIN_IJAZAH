@@ -13,6 +13,7 @@ import Transkrip from "@/pages/InputTranskripForm.vue";
 import MainNavbar from "@/pages/MainNavbar.vue";
 import Main2 from "@/pages/Main2.vue";
 import CheckDocument from "@/pages/CheckDocument.vue";
+import Upload from "@/pages/Upload.vue";
 const routes = [
   {
     path: "/admin",
@@ -32,7 +33,7 @@ const routes = [
       },
       {
         path: "table",
-        name: "Table List",
+        name: "Daftar Berkas",
         component: TableList
       },
       {
@@ -67,6 +68,11 @@ const routes = [
         path: "transkrip",
         name: "Membuat Transkrip Baru",
         component: Transkrip
+      },
+      {
+        path: "upload",
+        name: 'Upload Berkas Ijazah/Transkrip',
+        component: Upload
       }
     ]
   },

@@ -21,9 +21,13 @@
       </sidebar-link>
       <sidebar-link to="/admin/table">
         <md-icon>content_paste</md-icon>
-        <p>Table list</p>
+        <p>Daftar Berkas</p>
       </sidebar-link>
-      <sidebar-link to="/admin/typography">
+      <sidebar-link to="/admin/upload">
+        <md-icon>content_paste</md-icon>
+        <p>Upload Berkas</p>
+      </sidebar-link>
+      <!-- <sidebar-link to="/admin/typography">
         <md-icon>library_books</md-icon>
         <p>Typography</p>
       </sidebar-link>
@@ -38,7 +42,7 @@
       <sidebar-link to="/admin/notifications">
         <md-icon>notifications</md-icon>
         <p>Notifications</p>
-      </sidebar-link>
+      </sidebar-link> -->
     </side-bar>
 
     <div class="main-panel">

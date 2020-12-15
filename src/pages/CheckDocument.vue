@@ -45,7 +45,7 @@
         data() {
             return  {
                 dropOptions: {
-                    url: 'http://192.168.18.97:9000/stakeholder',
+                    url: process.env.VUE_APP_ENDPOINT_API+'/stakeholder',
                 }
 
             }
