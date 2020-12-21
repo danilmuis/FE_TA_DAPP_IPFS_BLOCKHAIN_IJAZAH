@@ -43,7 +43,7 @@
 
 export default {
   name: "mata-kuliah",
-  props:['submit'],
+  props:['submit','shouldRender'],
   data(){
     return{
       nilai:null,

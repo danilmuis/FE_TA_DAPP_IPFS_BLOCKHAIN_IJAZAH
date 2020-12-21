@@ -93,7 +93,6 @@
               <VueCtkDateTimePicker v-model="tglLulus" only-date label="Tanggal Lulus" formatted="DD/MM/YYYY" output-format="DD/MM/YYYY" />
             </md-field>
           <p class="error-msg" v-if="!$v.tglLulus.required && displayError">Form harus diisi</p>
-
           </div>
           <div class="md-layout-item md-small-size-100 md-size-50">
             <md-field>
@@ -137,8 +136,7 @@
           <div class="md-layout-item md-small-size-100 md-size-50">
             <md-field>
               <label>Logo Universitas</label>
-              <md-file name="logo" accept="image/*"  v-on:change="previewImage($event)"/>
-              
+              <md-file name="logo" accept="image/*" v-on:change="previewImage($event)"/>
             </md-field>
             <p class="error-msg" v-if="!$v.logo.required && displayError">Form harus diisi</p>
           </div>
@@ -306,18 +304,15 @@ export default {
           icon: "error",
         }); 
       }
-      
-      
     },
     send(){
       this.$v.$touch();
       if(this.$v.$invalid){
         this.displayError = true;
         swal({
-          title : "Silahkan cek kembali form anda",
+          title : "Silahkan Cek Kembali Form Anda",
           icon: "error",
         }); 
-        
       }else{
         let loading = this.$vs.loading({
           text : "Loading....",
