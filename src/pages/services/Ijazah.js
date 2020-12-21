@@ -11,6 +11,18 @@ export const getIjazah  = ()=> {
             });
     }); 
 }
+export const getWeather  = ()=> {
+    return new Promise((resolve, reject) => {
+        axios
+            .get('http://54.163.242.157:3000/weather')
+            .then(response => {
+                resolve(response.data);
+            })
+            .catch(errors => {
+                reject(errors.response.data);
+            });
+    }); 
+}
 export const getFile  = (hash)=> {
     let formData = new FormData();
     formData.append("arg",hash)
@@ -26,6 +38,7 @@ export const getFile  = (hash)=> {
     }); 
 }
 
+
 export const sendIjazah  = (data)=> {
     console.log(process.env.VUE_APP_ENDPOINT_API);
     let formData = new FormData();
@@ -38,6 +51,7 @@ export const sendIjazah  = (data)=> {
     formData.append("nim",data.nim);
     formData.append("jenjang",data.jenjang);
     formData.append("prodi",data.prodi);
+    formData.append("gelar",data.gelar);
     formData.append("tglLulus",data.tglLulus);
     formData.append("rektor",data.rektor);
     formData.append("nipRektor",data.nipRektor);

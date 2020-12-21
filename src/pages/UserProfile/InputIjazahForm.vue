@@ -11,105 +11,128 @@
         <div class="md-layout">
           <div class="md-layout-item md-small-size-100 md-size-100">
             <md-field>
-              <label>Nomor Surat</label>
-              <md-input v-model="nomor" name="nomor" type="text"></md-input>
+              <label >Nomor Surat</label>
+              <md-input v-bind:style="[$v.nomor.$error && displayError ? error : '']"  v-model.trim="$v.nomor.$model" name="nomor" type="text" ></md-input>
             </md-field>
+            <p class="error-msg" v-if="!$v.nomor.required && displayError">Form harus diisi</p>
+            
           </div>
           <div class="md-layout-item md-small-size-100 md-size-33">
             <md-field>
               <label>Nama</label>
-              <md-input v-model="nama" name="nama" type="text" ></md-input>
+              <md-input @input="nama = $event.toUpperCase()" v-bind:style="[$v.nama.$error && displayError ? error : '']" v-model.trim="$v.nama.$model" name="nama" type="text" ></md-input>
             </md-field>
+            <p class="error-msg" v-if="!$v.nama.required && displayError">Form harus diisi</p>
+            <p class="error-msg" v-if="!$v.nama.alphaSpace && displayError">Hanya huruf yang diperbolehkan</p>
           </div>
           <div class="md-layout-item md-small-size-100 md-size-33">
             <md-field>
               <label>Tempat Lahir</label>
-              <md-input v-model="tempat_lahir" name="tempat_lahir" type="text"></md-input>
+              <md-input @input="tempat_lahir = $event.toUpperCase()" v-bind:style="[$v.tempat_lahir.$error && displayError ? error : '']" v-model.trim="$v.tempat_lahir.$model" name="tempat_lahir" type="text"></md-input>
             </md-field>
+            <p class="error-msg" v-if="!$v.tempat_lahir.required && displayError">Form harus diisi</p>
+            <p class="error-msg" v-if="!$v.tempat_lahir.alphaSpace && displayError">Hanya huruf yang diperbolehkan</p>
           </div>
           <div class="md-layout-item md-small-size-100 md-size-33">
             <md-field>
-              <label>Tanggal Lahir</label>
-              <md-input v-model="tanggal_lahir" name="tanggal_lahir" type="text"></md-input>
+              <VueCtkDateTimePicker v-model="tanggal_lahir" only-date label="Tanggal Lahir" formatted="DD/MM/YYYY" output-format="DD/MM/YYYY" />
             </md-field>
+            <p class="error-msg" v-if="!$v.tanggal_lahir.required && displayError">Form harus diisi</p>
           </div>
           <div class="md-layout-item md-small-size-100 md-size-33">
             <md-field>
               <label>Email</label>
-              <md-input v-model="email" name="email" type="email"></md-input>
+              <md-input v-bind:style="[$v.email.$error && displayError ? error : '']"  v-model.trim="$v.email.$model" name="email" type="text"></md-input>
             </md-field>
+            <p class="error-msg" v-if="!$v.email.required && displayError">Form harus diisi</p>
+            <p class="error-msg" v-if="!$v.email.email && displayError">Harus berupa email yang valid</p>
           </div>
           <div class="md-layout-item md-small-size-100 md-size-33">
             <md-field>
               <label>NIM</label>
-              <md-input v-model="nim" name="nim" type="text"></md-input>
+              <md-input v-bind:style="[$v.nim.$error && displayError ? error : '']"  v-model.trim="$v.nim.$model" name="nim" type="text"></md-input>
             </md-field>
+            <p class="error-msg" v-if="!$v.nim.required && displayError">Form harus diisi</p>
+            <p class="error-msg" v-if="!$v.nim.numeric && displayError">Hanya angka yang diperbolehkan</p>
           </div>
           <div class="md-layout-item md-small-size-100 md-size-33">
             <md-field>
               <label>Nama Lembaga</label>
-              <md-input v-model="lembaga" name="lembaga" type="text"></md-input>
+              <md-input @input="lembaga = $event.toUpperCase()" v-bind:style="[$v.lembaga.$error && displayError ? error : '']"  v-model.trim="$v.lembaga.$model" name="lembaga" type="text"></md-input>
             </md-field>
-          </div>
-          
-          <div class="md-layout-item md-small-size-100 md-size-50">
-            <md-field>
-              <label>Program Studi</label>
-              <md-input v-model="prodi" name="prodi" type="text"></md-input>
-            </md-field>
+            <p class="error-msg" v-if="!$v.lembaga.required && displayError">Form harus diisi</p>
           </div>
           <div class="md-layout-item md-small-size-100 md-size-50">
             <md-field>
               <label>Jenjang Pendidikan</label>
-              <md-select  v-model="jenjang" name="jenjang">
+              <md-select v-bind:style="[$v.jenjang.$error && displayError ? error : '']"  v-model.trim="$v.jenjang.$model" name="jenjang">
                 <md-option value="S1">S1</md-option>
                 <md-option value="S2">S2</md-option>
                 <md-option value="S3">S3</md-option>
               </md-select>
             </md-field>
+            <p class="error-msg" v-if="!$v.jenjang.required && displayError">Form harus diisi</p>
+          </div>
+          <div class="md-layout-item md-small-size-100 md-size-50">
+            <md-field>
+              <label>Program Studi</label>
+              <md-input @input="prodi = $event.toUpperCase()" v-bind:style="[$v.prodi.$error && displayError ? error : '']" v-model.trim="$v.prodi.$model" name="prodi" type="text"></md-input>
+            </md-field>
+            <p class="error-msg" v-if="!$v.prodi.required && displayError">Form harus diisi</p>
+            <p class="error-msg" v-if="!$v.prodi.alphaSpace && displayError">Hanya huruf yang diperbolehkan</p>
           </div>
           <div class="md-layout-item md-small-size-100 md-size-50">
             <md-field>
               <label>Gelar</label>
-              <md-input v-model="gelar" name="gelar" type="text"></md-input>
+              <md-input v-bind:style="[$v.gelar.$error && displayError ? error : '']" v-model.trim="$v.gelar.$model" name="gelar" type="text"></md-input>
             </md-field>
+            <p class="error-msg" v-if="!$v.gelar.required && displayError">Form harus diisi</p>
           </div>
           <div class="md-layout-item md-small-size-100 md-size-50">
             <md-field>
-              <label>Tanggal Lulus</label>
-              <md-input v-model="tglLulus" name="tglLulus" type="text"></md-input>
+              <VueCtkDateTimePicker v-model="tglLulus" only-date label="Tanggal Lulus" formatted="DD/MM/YYYY" output-format="DD/MM/YYYY" />
             </md-field>
+          <p class="error-msg" v-if="!$v.tglLulus.required && displayError">Form harus diisi</p>
+
           </div>
-          
           <div class="md-layout-item md-small-size-100 md-size-50">
             <md-field>
               <label>Nama Rektor</label>
-              <md-input v-model="rektor" name="rektor" type="text"></md-input>
+              <md-input @input="rektor = $event.toUpperCase()" v-bind:style="[$v.rektor.$error && displayError ? error : '']" v-model.trim="$v.rektor.$model" name="rektor" type="text"></md-input>
             </md-field>
+            <p class="error-msg" v-if="!$v.rektor.required && displayError">Form harus diisi</p>
+            <p class="error-msg" v-if="!$v.rektor.alphaSpace && displayError">Hanya huruf yang diperbolehkan</p>
           </div>
           <div class="md-layout-item md-small-size-100 md-size-50">
             <md-field>
               <label>NIP Rektor</label>
-              <md-input v-model="nipRektor" name="nipRektor" type="text"></md-input>
+              <md-input v-bind:style="[$v.nipRektor.$error && displayError ? error : '']" v-model.trim="$v.nipRektor.$model" name="nipRektor" type="text"></md-input>
             </md-field>
+            <p class="error-msg" v-if="!$v.nipRektor.required && displayError">Form harus diisi</p>
+            <p class="error-msg" v-if="!$v.nipRektor.numeric && displayError">Hanya angka yang diperbolehkan</p>
           </div>
           <div class="md-layout-item md-small-size-100 md-size-50">
             <md-field>
               <label>Nama Dekan</label>
-              <md-input v-model="dekan" name="dekan" type="text"></md-input>
+              <md-input @input="dekan = $event.toUpperCase()" v-bind:style="[$v.dekan.$error && displayError ? error : '']" v-model.trim="$v.dekan.$model" type="text"></md-input>
             </md-field>
+            <p class="error-msg" v-if="!$v.dekan.required && displayError">Form harus diisi</p>
+            <p class="error-msg" v-if="!$v.dekan.alphaSpace && displayError">Hanya huruf yang diperbolehkan</p>
           </div>
           <div class="md-layout-item md-small-size-100 md-size-50">
             <md-field>
               <label>NIP Dekan</label>
-              <md-input v-model="nipDekan" name="nipDekan" type="text"></md-input>
+              <md-input v-bind:style="[$v.nipDekan.$error && displayError ? error : '']" v-model.trim="$v.nipDekan.$model" name="nipDekan" type="text"></md-input>
             </md-field>
+            <p class="error-msg" v-if="!$v.nipDekan.required && displayError">Form harus diisi</p>
+            <p class="error-msg" v-if="!$v.nipDekan.numeric && displayError">Hanya angka yang diperbolehkan</p>
           </div>
           <div class="md-layout-item md-small-size-100 md-size-50">
             <md-field>
               <label>Pas Foto</label>
               <md-file name="pas" accept="image/*" v-on:change="previewImage($event)"/>
             </md-field>
+            <p class="error-msg" v-if="!$v.pas.required && displayError">Form harus diisi</p>
           </div>
           <div class="md-layout-item md-small-size-100 md-size-50">
             <md-field>
@@ -117,6 +140,7 @@
               <md-file name="logo" accept="image/*"  v-on:change="previewImage($event)"/>
               
             </md-field>
+            <p class="error-msg" v-if="!$v.logo.required && displayError">Form harus diisi</p>
           </div>
           <div class="md-layout-item md-small-size-100 md-size-50">
             <md-card >
@@ -145,7 +169,10 @@
   </form>
 </template>
 <script>
-import { sendIjazah } from "../services"
+import { sendIjazah } from "../services";
+import { required,email,numeric } from 'vuelidate/lib/validators'
+import { usernameLength,alphaSpace,alphaNumeric } from "../validators";
+import swal from 'sweetalert';
 export default {
   name: "input-ijazah-form",
   props: {
@@ -155,74 +182,184 @@ export default {
     }
   },
   mounted: function(){
-    //alert(this.pas);
+    // console.log(alphaSpace);
+    console.log(this.$v.nomor);
   },
   data() {
     return {
-      nomor:null,
-      nama: null,
-      tempat_lahir: null,
-      tanggal_lahir: null,
-      email: null,
-      nim: null,
-      lembaga: null,
-      prodi: null,
-      jenjang: null,
-      gelar: null,
-      tglLulus: null,
-      rektor: null,
-      nipRektor: null,
-      dekan: null,
-      nipDekan: null,
-      pas: null,
-      logo: null,
+      nomor:'',
+      nama: '',
+      tempat_lahir: '',
+      tanggal_lahir: '',
+      email: '',
+      nim: '',
+      lembaga: '',
+      prodi: '',
+      jenjang: '',
+      gelar: '',
+      tglLulus: '',
+      rektor: '',
+      nipRektor: '',
+      dekan: '',
+      nipDekan: '',
+      pas: '',
+      logo: '',
       pasImage:null,
       logoImage:null,
+      displayError : false,
+      error:{
+        'border-bottom': '1px solid',
+        'border-color':'#9c27b0 !important',
+        'border-style':'double',
+      }
     };
   },
+  validations: {
+    nomor : {
+      required
+    },
+    nama : {
+      alphaSpace,
+      required
+    },
+    tempat_lahir : {
+      alphaSpace,
+      required
+    },
+    tanggal_lahir : {
+      required
+    },
+    email : {
+      required,
+      email
+    },
+    nim : {
+      required,
+      numeric
+    },
+    lembaga : {
+      required
+    },
+    jenjang : {
+      required
+    },
+    prodi : {
+      required,
+      alphaSpace
+    },
+    gelar : {
+      required
+    },
+    tglLulus : {
+      required
+    },
+    rektor : {
+      required,
+      alphaSpace
+    },
+    nipRektor : {
+      required,
+      numeric
+    },
+    dekan : {
+      required,
+      alphaSpace
+    },
+    nipDekan : {
+      required,
+      numeric
+    },
+    logo : {
+      required
+    },
+    pas : {
+      required
+    }
+  },
   methods: {
+    validationStatus : function(validation){
+      return typeof validation != "undefined" ? validation.$error : false;
+    },
     previewImage(event){
       const file = event.target.files[0];
-      const reader = new FileReader();
-      if(event.target.name == "pas"){
-        this.pas = event.target.files[0];
-        reader.onload = (event) =>{
-          this.pasImage = event.target.result;
+      if(file && file['type'].split('/')[0] === 'image'){
+        const reader = new FileReader();
+        if(event.target.name == "pas"){
+          this.pas = event.target.files[0];
+          reader.onload = (event) =>{
+            this.pasImage = event.target.result;
+          }
+        }else{
+          this.logo = file;
+          reader.onload = (event) =>{
+            this.logoImage = event.target.result;
+          }
         }
+        reader.readAsDataURL(file);
       }else{
-        this.logo = file;
-        reader.onload = (event) =>{
-          this.logoImage = event.target.result;
-        }
+        this.pas = '';
+        this.logo = '';
+        this.logoImage = null;
+        this.pasImage = null;
+        swal({
+          title : "Only Image Allowed",
+          icon: "error",
+        }); 
       }
-      reader.readAsDataURL(file);
+      
       
     },
     send(){
-      sendIjazah({
-        nomor: this.nomor,
-        logo: this.logo,
-        pas: this.pas,
-        lembaga: this.lembaga,
-        nama: this.nama,
-        ttl: this.tempat_lahir+', '+this.tanggal_lahir,
-        nim: this.nim,
-        jenjang: this.jenjang,
-        prodi: this.prodi,
-        tglLulus: this.tglLulus,
-        rektor: this.rektor,
-        nipRektor: this.nipRektor,
-        dekan: this.dekan,
-        nipDekan: this.nipDekan,
-        email: this.email,
+      this.$v.$touch();
+      if(this.$v.$invalid){
+        this.displayError = true;
+        swal({
+          title : "Silahkan cek kembali form anda",
+          icon: "error",
+        }); 
+        
+      }else{
+        let loading = this.$vs.loading({
+          text : "Loading....",
+          color : "#4dc3ff"
+        });
+        sendIjazah({
+          nomor: this.nomor,
+          logo: this.logo,
+          pas: this.pas,
+          lembaga: this.lembaga,
+          nama: this.nama,
+          ttl: this.tempat_lahir+', '+this.tanggal_lahir,
+          nim: this.nim,
+          jenjang: this.jenjang,
+          prodi: this.prodi,
+          tglLulus: this.tglLulus,
+          rektor: this.rektor,
+          nipRektor: this.nipRektor,
+          dekan: this.dekan,
+          nipDekan: this.nipDekan,
+          email: this.email,
+          gelar : this.gelar,
 
-      }).then(response =>{
-          alert(response);
-          alert(JSON.stringify(response));
-      }).catch(errors =>{
-          alert(errors);
-          alert(JSON.stringify(errors));
-      });
+        }).then(response =>{
+            loading.close();
+            swal({
+              title : "Ijazah Berhasil dikirimkan",
+              icon: "success",
+            }).
+            then(()=>{
+              window.location.href = this.$route.path;
+            });
+        }).catch(errors =>{
+            loading.close();
+            swal({
+              title : "Ijazah Gagal dibuat",
+              icon: "error",
+            });
+            console.log(JSON.stringify(errors));
+        });
+      }
+      
     }
   }
 };
@@ -235,5 +372,23 @@ export default {
   img{
     height:200px;
     width:300px;
+  }
+  .is-error{
+    color: #e85600;
+  }
+  .error-form{
+    border-bottom:1px solid;
+    border-color:#9c27b0 !important;
+    border-style:double;
+  }
+  #error-form{
+    border-bottom:1px solid;
+    border-color:#9c27b0 !important;
+    border-style:double;
+  }
+  .error-msg{
+    color:red !important;
+    font-size:10px;
+    margin-top:-20px;
   }
 </style>

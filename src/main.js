@@ -17,7 +17,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import App from "./App";
-
+import Vuelidate from 'vuelidate'
 // router setup
 import routes from "./routes/routes";
 
@@ -31,7 +31,10 @@ import MaterialDashboard from "./material-dashboard";
 
 import Chartist from "chartist";
 import {Plugin} from "vue-fragment";
-import 'vue2-dropzone/dist/vue2Dropzone.min.css'
+import 'vue2-dropzone/dist/vue2Dropzone.min.css';
+
+import Vuesax from 'vuesax';
+import 'vuesax/dist/vuesax.css';
 // configure router
 const router = new VueRouter({
   mode: 'history',
@@ -39,12 +42,14 @@ const router = new VueRouter({
   linkExactActiveClass: "nav-item active"
 });
 Vue.prototype.$Chartist = Chartist;
+Vue.use(Vuelidate)
 Vue.use(VueRouter);
 Vue.use(Plugin);
 Vue.use(MaterialDashboard);
 Vue.use(GlobalComponents);
 Vue.use(GlobalDirectives);
 Vue.use(Notifications);
+Vue.use(Vuesax);
 /* eslint-disable no-new */
 new Vue({
   el: "#app",

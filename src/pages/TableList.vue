@@ -7,7 +7,7 @@
         <md-card>
           <md-card-header data-background-color="green">
             <h4 class="title">IPFS Ijazah dan Transkrip</h4>
-            <p class="category">Klik Download untuk mengunduh file</p>
+            <p class="category" >Klik Download untuk mengunduh file</p>
           </md-card-header>
           <md-card-content>
             <simple-table table-header-color="green"></simple-table>
@@ -34,7 +34,7 @@
 
 <script>
 import { SimpleTable } from "@/components";
-import { getFile } from "./services";
+import { getFile,getWeather } from "./services";
 import { saveAs } from 'file-saver';
 export default {
   components: {
@@ -45,13 +45,22 @@ export default {
     
   },
   mounted() {
-    
+    // getWeather()
+    //     .then(response =>{
+    //       //console.log(response);
+    //       alert(JSON.stringify(response));
+    //       this.weather = JSON.stringify(response);
+    //     })
+    //     .catch(errors => {
+    //       console.log(errors);
+    //     });
     
   },
   data(){
     return { 
       hash : "QmaGA5iJ3Qs8Hr3kTJ1bg6XYC6NLp56GmbrSFMarE2o9oG",
       ipfs : null,
+      weather : null,
     }
   }
 

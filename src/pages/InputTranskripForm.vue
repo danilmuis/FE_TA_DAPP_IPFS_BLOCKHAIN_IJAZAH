@@ -285,6 +285,7 @@ export default {
           logo: this.logo,
           pas: this.pas,
           lembaga: this.lembaga,
+          gelar : this.gelar,
           nama: this.nama,
           ttl: this.tempat_lahir+', '+this.tanggal_lahir,
           nim: this.nim,

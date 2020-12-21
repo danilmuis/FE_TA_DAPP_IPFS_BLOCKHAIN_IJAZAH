@@ -1,8 +1,6 @@
 import axios from "axios";
 
 export const sendTranskrip  = (data)=> {
-    console.log(process.env.VUE_APP_ENDPOINT_API);
-    console.log(data.kode_matkul);
     let formData = new FormData();
     for(var i=0;i<data.kode_matkul.length;i++){
         formData.append("kode_matkul",data.kode_matkul[i]);
@@ -25,7 +23,7 @@ export const sendTranskrip  = (data)=> {
     formData.append("fakultas",data.fakultas);
     formData.append("ipk",data.ipk);
     formData.append("ta",data.ta);
-    formData.append("gelar",data.nomor);
+    formData.append("gelar",data.gelar);
     formData.append("tglLulus",data.tglLulus);
     formData.append("rektor",data.rektor);
     formData.append("nipRektor",data.nipRektor);
