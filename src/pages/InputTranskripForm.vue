@@ -164,7 +164,13 @@
                   <md-button v-if="!formMK" class="md-raised md-success" @click="swap">Matakuliah with file </md-button>
                 </div>
                 <div v-if="formMK" class="md-layout-item md-size-100 text-left">
-                  <md-button class="md-raised md-success" @click="tambah" v-for="(data,index) in items" :key="index">Tambah Mata Kuliah {{data}} {{index}} </md-button>
+                  <md-button class="md-raised md-success" @click="tambah" >Tambah Mata Kuliah</md-button>
+                </div>
+                <div v-if="!formMK" class="md-layout-item md-size-100 text-left">
+                  <md-field>
+                    <label>Upload Data Matakuliah</label>
+                    <md-file name="fileMK" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" v-on:change="loadForm($event)"/>
+                  </md-field>
                 </div>
                   <!-- MK -->
                 <mata-kuliah :submit="submit" v-for="(data,index) in items" :key="index" @hapus="$delete(items,index)" @mk="pushData" > </mata-kuliah>
@@ -367,8 +373,9 @@ export default {
       console.log(this.jumlah);
       console.log(this.items);
     },
-    readMatakuliah(file){
-      alert(1);
+    loadForm(event){
+      const file = event.target.files[0];
+      console.log(file);
     },
     tambah(){
       this.jumlah = this.jumlah + 1;
