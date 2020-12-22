@@ -109,7 +109,7 @@
                 <div class="md-layout-item md-small-size-100 md-size-25">
                   <md-field>
                     <label>Judul Tugas Akhir</label>
-                    <md-input @input="prodi = $event.toUpperCase()" v-bind:style="[$v.ta.$error && displayError ? error : '']" v-model.trim="$v.ta.$model" name="ta" type="text"></md-input>
+                    <md-input @input="ta = $event.toUpperCase()" v-bind:style="[$v.ta.$error && displayError ? error : '']" v-model.trim="$v.ta.$model" name="ta" type="text"></md-input>
                   </md-field>
                   <p class="error-msg" v-if="!$v.ta.required && displayError">Form harus diisi</p>
                 </div>
@@ -160,8 +160,8 @@
                   <p class="error-msg" v-if="!$v.nipDekan.numeric && displayError">Hanya angka yang diperbolehkan</p>
                 </div>
                 <div class="md-layout-item md-size-100 text-left">
-                  <md-button v-if="formMK" class="md-raised md-success" @click="swap">Matakuliah with data </md-button>
-                  <md-button v-if="!formMK" class="md-raised md-success" @click="swap">Matakuliah with file </md-button>
+                  <md-button class="md-raised" :class="[formMK ? 'md-warning' : '']"  @click="swap">Matakuliah with data </md-button>
+                  <md-button class="md-raised" :class="[!formMK ? 'md-warning' : '']"  @click="swap">Matakuliah with file </md-button>
                 </div>
                 <div v-if="formMK" class="md-layout-item md-size-100 text-left">
                   <md-button class="md-raised md-success" @click="tambah" >Tambah Mata Kuliah</md-button>
@@ -169,8 +169,9 @@
                 <div v-if="!formMK" class="md-layout-item md-size-100 text-left">
                   <md-field>
                     <label>Upload Data Matakuliah</label>
-                    <md-file name="fileMK" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" v-on:change="loadForm($event)"/>
+                    <md-file name="fileMK" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" @change="setFileMK($event)" />
                   </md-field>
+                  <a href="../contoh_input_MK.xlsx"><md-button class="md-raised md-danger" >Contoh File Matakuliah</md-button></a>
                 </div>
                   <!-- MK -->
                 <mata-kuliah :submit="submit" v-for="(data,index) in items" :key="index" @hapus="$delete(items,index)" @mk="pushData" > </mata-kuliah>
@@ -224,6 +225,7 @@ import { MataKuliah } from "@/pages";
 import { getIjazah,sendTranskrip } from "./services"
 import { required,email,numeric } from 'vuelidate/lib/validators'
 import { usernameLength,alphaSpace,alphaNumeric } from "./validators";
+import readXlsxFile from 'read-excel-file';
 import swal from 'sweetalert';
 export default {
   name: "input-transkrip-form",
@@ -276,6 +278,7 @@ export default {
         'border-style':'double',
       },
       formMK : true,
+      fileMK : null,
     };
   },
   validations: {
@@ -355,12 +358,29 @@ export default {
     }
   },
   methods: {
+    setFileMK(event){
+      this.fileMK = event.target.files[0];
+    },
+    readFileExcel(){
+      readXlsxFile(this.fileMK).then((rows)=>{
+        rows.forEach((row)=>{
+          if(row[2] != "SEMESTER"){
+            this.kode_matkul.push(row[0]);
+            this.matkul.push(row[1]);
+            this.semester.push(row[2]);
+            this.sks.push(row[3]);
+            this.nilai.push(row[4]);
+          }
+        })
+      })
+    },
     async swap(){
       this.formMK = !this.formMK;
       if(this.formMK){
         console.log('ini data');
         this.jumlah = 1;
         this.items = [1];
+        this.fileMK = null;
       }else{
         console.log('ini file');
         this.jumlah = 0;
@@ -430,10 +450,8 @@ export default {
       this.nilai.push(data.nilai);
     },
     send(){
-      this.submit=this.submit+1;
       this.$v.$touch();
-      this.readMatakuliah();
-      return;
+      
       if(this.$v.$invalid){
         this.displayError = true;
         swal({
@@ -445,6 +463,11 @@ export default {
           text : "Loading....",
           color : "#4dc3ff"
         });
+        if(this.fileMK != null){
+          this.readFileExcel();
+        }else{
+          this.submit=this.submit+1;
+        }
         setTimeout(()=> {
           sendTranskrip({
             nomor: this.nomor,
