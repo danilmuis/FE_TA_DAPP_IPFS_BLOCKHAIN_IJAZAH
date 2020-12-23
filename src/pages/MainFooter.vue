@@ -10,10 +10,8 @@
                 <sup>4</sup>NeroChaniago -
                 <sup>5</sup>Muhammad Danil Muis</h6>
             <h6 class="text-footer">Telkom University</h6>
-            <h6 class="text-footer"><a target="_blank" href="https://icons8.com/icons/set/add-property">Add Property
-                    icon</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a></h6>
-            <h6 class="text-footer"><a target="_blank" href="https://icons8.com/icons/set/search-property">Search
-                    Property icon</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a></h6>
+            <h6 class="text-footer"><a target="_blank" href="https://icons8.com/icons/set/open-document">Open Document icon</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a></h6>
+            <h6 class="text-footer"><a target="_blank" href="https://icons8.com/icons/set/verification-document">Verification Document icon</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a></h6>
         </div>
     </footer>
 </template>
@@ -30,8 +28,8 @@
     left:0;
     font-size:1px; 
     /*background-color: #081228;*/
-    background-color :#EEEEEE;
-    height:20%;
+    background-color :#46A24B;
+    height:15%;
 }
 .content h6{
     font-size:12px;
@@ -42,5 +40,17 @@
     /*color:#faf9e8;*/
     color: black;
     text-transform: none;
+}
+@media only screen and (max-width:600px){
+    #footer{
+        position:fixed;
+        bottom:0;
+        right:0;
+        left:0;
+        font-size:1px; 
+        /*background-color: #081228;*/
+        background-color :#46A24B;
+        height:21%;
+    }
 }
 </style>

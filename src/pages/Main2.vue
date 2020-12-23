@@ -10,11 +10,11 @@
                         <div class="card-body text-center border border-success col-xs-12 ">
                             <div class="row">
                                 <div class="col-md-6  img1 img-responsive">
-                                    <a href="/admin"><img src="../../src/assets/img/admin.png" alt="admin" width="150"></a>
+                                    <a href="/admin"><img src="img/admin.png" alt="admin" width="150"></a>
 
                                 </div>
                                 <div class="col-md-6  img2 img-responsive">
-                                    <a href="/checker"><img src="../../src/assets/img/stakeholder.png" alt="stakeholder"
+                                    <a href="/checker"><img src="img/stakeholder.png" alt="stakeholder"
                                             width="150"></a>
 
                                 </div>

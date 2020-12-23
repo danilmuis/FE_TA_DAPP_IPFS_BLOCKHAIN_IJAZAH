@@ -3,19 +3,18 @@
         <div class="new-bg" style="">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-6" style="text-align:left;">
-                        <a href="/"><img src="../../src/assets/img/ristekdikti.png" alt="Ristek Dikti" style="margin-top:50px;width:150px;"></a>
+                    <div class="col-md-6 teksnya" style="">
+                        <a href="/"><img src="img/ristekdikti.png" alt="Ristek Dikti" class="check-gambar"></a>
                         <h1
-                            style="color: #fff;font-weight: 500;font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
+                            class="text-check">
                             SIVIL-CHAIN
                         </h1>
                         <h6
-                            style="color: #fff;text-transform: none; font-size:16px;font-weight: 500;font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
-                            Sistem Verifikasi Dokumen Elektronik Ijazah dan Transkrip Berbasis Blockchain
+                            class="text-check check2">
+                            Sistem Verifikasi Dokumen Elektronik Ijazah dan Transkrip Berbasis Blockchain dan IPFS
                         </h6>
                         <hr style="background-color:#000000;">
-                        <h6
-                            style="color: #fff;text-transform: none; margin-top: 20px;font-weight: 500;font-size:16px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
+                        <h6 class="text-check check3">
                             Untuk memastikan keabsahan ijazah dan transkrip
                             anda, pastikan
                             file ijazah dan transkrip anda dapat diverifikasi melalui SIVIL.
@@ -25,7 +24,12 @@
                         </h6>
                     </div>
                     <div class="col-md-6" style="margin:auto;"> 
-                        <vue-dropzone ref="dropzone" id="drop1" :options="dropOptions" v-on:vdropzone-error="error" v-on:vdropzone-success="success" v-on:vdropzone-sending="sendingEvent"></vue-dropzone>
+                        <vue-dropzone :useCustomSlot=true ref="dropzone" v-on:vdropzone-thumbnail="thumbnail" id="customdropzone" :options="dropOptions" v-on:vdropzone-error="error" v-on:vdropzone-success="success" v-on:vdropzone-sending="sendingEvent">
+                            <div class="dropzone-custom-content">
+                                <h4 class="dropzone-custom-title">Seret Dokumenmu Untuk dicek Keasliannya</h4>
+                                <div class="subtitle">...atau Klik Untuk Memilih Dokumen</div>
+                            </div>
+                        </vue-dropzone>
                     </div>
                 </div>
             </div>
@@ -74,11 +78,58 @@
                     title : "Dokumen Tidak Valid",
                     icon: "error",
                 })
-            }
+            },
+           
         }
     }
 </script>
 <style>
+    .teksnya{
+        text-align:justify;
+    }
+    .text-check{
+        color: #fff;
+        text-transform: none; 
+        font-weight: 500;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+    .check2{
+        
+        font-size:16px;
+    }
+    .check3{
+        
+        font-size:16px; 
+        margin-top: 20px;
+
+
+    }
+    .check-gambar{
+        margin-top:50px;
+        width:150px;
+    }
+    #customdropzone {
+        border:2px dashed darkgreen;
+        background-color:#EEEEEE;
+        font-family: Arial,sans-serif;
+        letter-spacing: .2px;
+        color: #46A24B;
+        -webkit-transition: .2s linear;
+        transition: .2s linear;
+        margin-top:100px;
+        margin-left:100px;
+    }
+    #customdropzone .dz-preview  {
+        position: relative;
+        display: inline-block;
+        vertical-align: top;
+        margin-right: 80px;
+        min-height: 100px;
+    }
+    #customdropzone .dz-preview .dz-details  {
+        
+        background-color:lightgreen;
+    }
     .new-bg {
         background-color:#46A24B;
         text-align:right;
@@ -91,15 +142,71 @@
         width:100%;
         
     }
-    
     .card-bege{
         width: 25rem; margin: auto;  background-color: #faf9e8;
     }
     @media only screen and (max-width:600px){
+        .check-gambar{
+            margin-top:50px;
+            width:150px;
+            margin-left:80px;
+        }
         .card-bege{
-        width: 10rem; margin: auto;  background-color: #faf9e8;
-    }
-    .gambar{
+            width: 10rem; margin: auto;  background-color: #faf9e8;
+        }
+        .new-bg {
+            background-color:#46A24B;
+            text-align:right;
+            border-style : solid;
+            border : 1px solid ;
+            min-height : 50px;
+            border-end-end-radius: 30%;
+            border-end-start-radius: 30%;
+            height:30%;
+            width:100%;
+        
+        }
+        .text-check{
+            color:#46A24B;
+            text-transform: none; 
+            font-weight: 500;
+            margin-top:50px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        .check2{
+            font-size:16px;
+            margin-top:10px;
+        }
+        .check3{
+            font-size:16px; 
+            margin-top: 20px;
+            margin-top:10px;
+        }
+        #customdropzone {
+            border:2px dashed darkgreen;
+            background-color:#EEEEEE;
+            font-family: Arial,sans-serif;
+            letter-spacing: .2px;
+            color: #46A24B;
+            -webkit-transition: .2s linear;
+            transition: .2s linear;
+            margin-top:30px;
+            margin-left:20px;
+            margin-bottom:200px;
+        }
+        #customdropzone .dz-preview  {
+            position: relative;
+            display: inline-block;
+            vertical-align: top;
+            margin-right: 15px;
+            min-height: 100px;
+            z-index: 0;
+        }
+        #customdropzone .dz-preview .dz-details  {
+            
+            background-color:lightgreen;
+        }
+    /* .gambar{
         width:100px;
     }
     
@@ -122,7 +229,7 @@
             position: absolute;
             right: 10px;
             top: 5px;
-        }
+        } */
     
     
 }

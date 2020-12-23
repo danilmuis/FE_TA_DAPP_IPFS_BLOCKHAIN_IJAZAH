@@ -23,10 +23,10 @@
         <md-icon>content_paste</md-icon>
         <p>Daftar Berkas</p>
       </sidebar-link>
-      <sidebar-link to="/admin/upload">
+      <!-- <sidebar-link to="/admin/upload">
         <md-icon>content_paste</md-icon>
         <p>Upload Berkas</p>
-      </sidebar-link>
+      </sidebar-link> -->
       <!-- <sidebar-link to="/admin/typography">
         <md-icon>library_books</md-icon>
         <p>Typography</p>
