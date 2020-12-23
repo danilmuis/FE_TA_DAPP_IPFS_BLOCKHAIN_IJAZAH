@@ -377,12 +377,10 @@ export default {
     async swap(){
       this.formMK = !this.formMK;
       if(this.formMK){
-        console.log('ini data');
         this.jumlah = 1;
         this.items = [1];
         this.fileMK = null;
       }else{
-        console.log('ini file');
         this.jumlah = 0;
         var jumlah  = this.items.length;
         for( var i = 0 ; i< jumlah ; i++){
@@ -390,12 +388,9 @@ export default {
         }
         // await this.$delete(this.items,0);
       }
-      console.log(this.jumlah);
-      console.log(this.items);
     },
     loadForm(event){
       const file = event.target.files[0];
-      console.log(file);
     },
     tambah(){
       this.jumlah = this.jumlah + 1;
@@ -432,15 +427,6 @@ export default {
     },
     finished(value){
       this.jumlah = value;
-    },
-    ijazah(){
-      getIjazah()
-        .then(response =>{
-          console.log(response);
-        })
-        .catch(errors => {
-          console.log(errors);
-        });
     },
     async pushData(data){
       this.kode_matkul.push(data.kode_matkul);
@@ -511,7 +497,6 @@ export default {
                 title : "Transkrip Gagal dibuat",
                 icon: "error",
               });
-              console.log(JSON.stringify(errors));
           });
         },1000);
       }

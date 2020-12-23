@@ -14,6 +14,9 @@ import MainNavbar from "@/pages/MainNavbar.vue";
 import Main2 from "@/pages/Main2.vue";
 import CheckDocument from "@/pages/CheckDocument.vue";
 import Upload from "@/pages/Upload.vue";
+
+import CheckDocument2 from "@/pages/CheckDocument2.vue";
+import Dashboard2 from "@/pages/Dashboard2.vue";
 const routes = [
   {
     path: "/admin",
@@ -76,19 +79,29 @@ const routes = [
       }
     ]
   },
+  // {
+    
+  //   path: "/",
+  //   name: "main",
+  //   component: Main2
+    
+  // },
+  // {
+    
+  //   path: "/checker",
+  //   name: "Check Document",
+  //   component: CheckDocument
+    
+  // },
   {
-    
-    path: "/",
-    name: "mdm",
-    component: Main2
-    
+    path : "/",
+    name : "main",
+    component : Dashboard2
   },
   {
-    
-    path: "/checker",
-    name: "Check Document",
-    component: CheckDocument
-    
+    path : "/checker",
+    name : "Check Document",
+    component  : CheckDocument2
   }
 ];
 

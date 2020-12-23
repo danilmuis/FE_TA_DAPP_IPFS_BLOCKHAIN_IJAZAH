@@ -61,11 +61,11 @@
                 this.$refs.dropzone.removeAllFiles();
             },
             success(file,response){
-                console.log(response);
+                //console.log(response);
                 alert(response.message);
             },
             error(file,response,xhr){
-                console.log(response);
+                //console.log(response);
                 alert(response);
             }
         }

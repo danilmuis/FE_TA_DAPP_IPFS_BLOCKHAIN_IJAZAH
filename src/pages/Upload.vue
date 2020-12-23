@@ -36,11 +36,9 @@
         },
         methods:{
             success(file,response){
-                console.log(response);
                 alert(response.message);
             },
             error(file,response,xhr){
-                console.log(response);
                 alert(response);
             },
             sendingEvent(){

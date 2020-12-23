@@ -40,7 +40,6 @@ export const getFile  = (hash)=> {
 
 
 export const sendIjazah  = (data)=> {
-    console.log(process.env.VUE_APP_ENDPOINT_API);
     let formData = new FormData();
     formData.append("nomor",data.nomor)
     formData.append("logo", data.logo,data.logo.name);
@@ -58,7 +57,6 @@ export const sendIjazah  = (data)=> {
     formData.append("dekan",data.dekan);
     formData.append("nipDekan",data.nipDekan);
     formData.append("email",data.email);
-    console.log(formData);
     
     return new Promise((resolve, reject) => {
         axios

@@ -67,9 +67,7 @@ export default {
     }
   },
   methods: {
-    display(){
-      console.log(this.nilai,this.sks,this.semester,this.matkul,this.kode_matkul);
-    },
+    
     deleteRow(event){
       event.preventDefault();
       this.$emit("hapus");

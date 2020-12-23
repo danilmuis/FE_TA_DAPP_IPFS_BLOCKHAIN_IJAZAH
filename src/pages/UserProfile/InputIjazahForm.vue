@@ -181,7 +181,6 @@ export default {
   },
   mounted: function(){
     // console.log(alphaSpace);
-    console.log(this.$v.nomor);
   },
   data() {
     return {
@@ -351,7 +350,6 @@ export default {
               title : "Ijazah Gagal dibuat",
               icon: "error",
             });
-            console.log(JSON.stringify(errors));
         });
       }
       
