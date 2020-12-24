@@ -135,7 +135,7 @@
         text-align:right;
         border-style : solid;
         border : 1px solid ;
-        min-height : 300px;
+        min-height : 560px;
         border-end-end-radius: 30%;
         border-end-start-radius: 30%;
         height:70%;
