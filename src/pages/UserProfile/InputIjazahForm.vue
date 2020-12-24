@@ -144,7 +144,7 @@
             <md-card >
               <md-card-media-actions>
                 <md-card-media class="center" >
-                  <img v-if="pasImage" :src="pasImage">
+                  <img v-if="pasImage" :src="pasImage" style="width:400px;height:200px;">
                 </md-card-media>
               </md-card-media-actions>
             </md-card>
@@ -153,7 +153,7 @@
             <md-card>
               <md-card-media-actions >
                 <md-card-media class="center">
-                  <img v-if="logoImage" :src="logoImage">
+                  <img v-if="logoImage" :src="logoImage" style="width:400px;height:200px;">
                 </md-card-media>
               </md-card-media-actions>
             </md-card>

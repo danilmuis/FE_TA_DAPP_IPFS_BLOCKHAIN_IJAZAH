@@ -32,7 +32,15 @@
   <div class="md-layout-item md-small-size-100 md-size-20" id="nilai" >
     <md-field>
       <label>Nilai </label>
-      <md-input v-model="nilai" name="nilai" type="text"></md-input>
+      <md-select v-model="nilai" name="nilai">
+        <md-option value="A">A</md-option>
+        <md-option value="AB">AB</md-option>
+        <md-option value="B">B</md-option>
+        <md-option value="BC">BC</md-option>
+        <md-option value="C">C</md-option>
+        <md-option value="D">D</md-option>
+        <md-option value="E">E</md-option>
+      </md-select>
     </md-field>
   </div>
 </fragment>

@@ -102,7 +102,7 @@
                 <div class="md-layout-item md-small-size-100 md-size-25">
                   <md-field>
                     <label>IPK</label>
-                    <md-input  v-bind:style="[$v.ipk.$error && displayError ? error : '']"  v-model.trim="$v.ipk.$model" name="ipk" type="number"></md-input>
+                    <md-input  v-bind:style="[$v.ipk.$error && displayError ? error : '']"  v-model.trim="$v.ipk.$model" name="ipk" type="number" min="0" max="4" step="0.01" pattern="^\d+(?:\.\d{1,2})?$"></md-input>
                   </md-field>
                   <p class="error-msg" v-if="!$v.ipk.required && displayError">Form harus diisi</p>
                 </div>
@@ -193,7 +193,7 @@
                   <md-card >
                     <md-card-media-actions>
                       <md-card-media class="center" >
-                        <img v-if="pasImage" :src="pasImage">
+                        <img v-if="pasImage" :src="pasImage" style="width:400px;height:200px;">
                       </md-card-media>
                     </md-card-media-actions>
                   </md-card>
@@ -202,13 +202,11 @@
                   <md-card>
                     <md-card-media-actions >
                       <md-card-media class="center">
-                        <img v-if="logoImage" :src="logoImage">
+                        <img v-if="logoImage" :src="logoImage" style="width:400px;height:200px;">
                       </md-card-media>
                     </md-card-media-actions>
                   </md-card>
                 </div>
-                
-                
                 <div class="md-layout-item md-size-100 text-left">
                   <md-button class="md-raised md-success" type="submit" >Buat Transkrip Nilaimu </md-button>
                 </div>
@@ -322,8 +320,7 @@ export default {
       alphaSpace
     },
     ipk : {
-      required,
-      numeric
+      required
     },
     ta : {
       required,
