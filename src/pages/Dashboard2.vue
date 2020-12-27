@@ -43,11 +43,11 @@
         text-align:center;
         margin-top:50px;
     }
-    .bg-blue {
+    /* .bg-blue {
         margin-top : 40px;
         background-color:#EEEEEE;
         height:30%
-    }
+    } */
     
     .card-bege{
         width: 25rem; margin: auto;  background-color: #faf9e8;

@@ -27,8 +27,8 @@
     right:0;
     left:0;
     font-size:1px; 
-    /*background-color: #081228;*/
-    background-color :#46A24B;
+    background-color: #081228;
+    /* background-color :#46A24B; */
     height:15%;
 }
 .content h6{
@@ -37,8 +37,8 @@
     font-family: 'Raleway', sans-serif;
 }
 .text-footer{
-    /*color:#faf9e8;*/
-    color: black;
+    color:#faf9e8;
+    /* color: black; */
     text-transform: none;
 }
 @media only screen and (max-width:600px){
@@ -48,8 +48,8 @@
         right:0;
         left:0;
         font-size:1px; 
-        /*background-color: #081228;*/
-        background-color :#46A24B;
+        background-color: #081228;
+        /* background-color :#46A24B; */
         height:21%;
     }
 }

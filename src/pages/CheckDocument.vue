@@ -4,7 +4,7 @@
         <div class="container">
         <div class="row">
         <div class="col-md-6" style="text-align:left;">
-                    <a href="/"><img src="img/ristekdikti.png" alt="Ristek Dikti" style="margin-top:50px;width:150px;"></a>
+                    <a href="/"><img src="../../src/assets/img/ristekdikti.png" alt="Ristek Dikti" style="margin-top:50px;width:150px;"></a>
                     <h1
                         style="color: #fff;font-weight: 500;font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
                         SIVIL-CHAIN</h1>
@@ -61,12 +61,17 @@
                 this.$refs.dropzone.removeAllFiles();
             },
             success(file,response){
-                //console.log(response);
-                alert(response.message);
+                swal({
+                    title : "Dokumen Valid",
+                    text : 'Hash : '+response.message,
+                    icon: "success",
+                });
             },
             error(file,response,xhr){
-                //console.log(response);
-                alert(response);
+                swal({
+                    title : "Dokumen Tidak Valid",
+                    icon: "error",
+                });
             }
         }
     }
