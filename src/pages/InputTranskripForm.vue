@@ -159,22 +159,7 @@
                   <p class="error-msg" v-if="!$v.nipDekan.required && displayError">Form harus diisi</p>
                   <p class="error-msg" v-if="!$v.nipDekan.numeric && displayError">Hanya angka yang diperbolehkan</p>
                 </div>
-                <div class="md-layout-item md-size-100 text-left">
-                  <md-button class="md-raised" :class="[formMK ? 'md-warning' : '']"  @click="swap">Matakuliah with data </md-button>
-                  <md-button class="md-raised" :class="[!formMK ? 'md-warning' : '']"  @click="swap">Matakuliah with file </md-button>
-                </div>
-                <div v-if="formMK" class="md-layout-item md-size-100 text-left">
-                  <md-button class="md-raised md-success" @click="tambah" >Tambah Mata Kuliah</md-button>
-                </div>
-                <div v-if="!formMK" class="md-layout-item md-size-100 text-left">
-                  <md-field>
-                    <label>Upload Data Matakuliah</label>
-                    <md-file name="fileMK" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" @change="setFileMK($event)" />
-                  </md-field>
-                  <a href="../contoh_input_MK.xlsx"><md-button class="md-raised md-danger" >Contoh File Matakuliah</md-button></a>
-                </div>
-                  <!-- MK -->
-                <mata-kuliah :submit="submit" v-for="(data,index) in items" :key="index" @hapus="$delete(items,index)" @mk="pushData" > </mata-kuliah>
+                
                 <div class="md-layout-item md-small-size-100 md-size-50">
                   <md-field>
                     <label>Pas Foto</label>
@@ -207,6 +192,22 @@
                     </md-card-media-actions>
                   </md-card>
                 </div>
+                <div class="md-layout-item md-size-100 text-left">
+                  <md-button class="md-raised" :class="[formMK ? 'md-warning' : '']"  @click="swap">Matakuliah with data </md-button>
+                  <md-button class="md-raised" :class="[!formMK ? 'md-warning' : '']"  @click="swap">Matakuliah with file </md-button>
+                </div>
+                <div v-if="formMK" class="md-layout-item md-size-100 text-left">
+                  <md-button class="md-raised md-success" @click="tambah" >Tambah Mata Kuliah</md-button>
+                </div>
+                <div v-if="!formMK" class="md-layout-item md-size-100 text-left">
+                  <md-field>
+                    <label>Upload Data Matakuliah</label>
+                    <md-file name="fileMK" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" @change="setFileMK($event)" />
+                  </md-field>
+                  <a href="../contoh_input_MK.xlsx"><md-button class="md-raised md-danger" >Contoh File Matakuliah</md-button></a>
+                </div>
+                  <!-- MK -->
+                <mata-kuliah :submit="submit" v-for="(data,index) in items" :key="index" @hapus="$delete(items,index)" @mk="pushData" > </mata-kuliah>
                 <div class="md-layout-item md-size-100 text-left">
                   <md-button class="md-raised md-success" type="submit" >Buat Transkrip Nilaimu </md-button>
                 </div>

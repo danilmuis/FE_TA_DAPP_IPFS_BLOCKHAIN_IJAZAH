@@ -4,9 +4,9 @@
       <nav>
         <ul>
           <li>
-            <a href="https://www.creative-tim.com">Creative Tim</a>
+            <a href="https://github.com/danilmuis/TA_DAPP_IPFS_BLOCKCHAIN_IJAZAH">Documentation</a>
           </li>
-          <li>
+          <!-- <li>
             <a href="https://creative-tim.com/presentation">
               About Us
             </a>
@@ -20,14 +20,15 @@
             <a href="https://www.creative-tim.com/license">
               Licenses
             </a>
-          </li>
+          </li> -->
         </ul>
       </nav>
       <div class="copyright text-center">
-        &copy; {{ new Date().getFullYear() }}
-        <a href="https://www.creative-tim.com/?ref=mdf-vuejs" target="_blank"
-          >Creative Tim</a
-        >, made with <i class="fa fa-heart heart"></i> for a better web
+        &copy; 2020
+        <a href="" target="_blank"
+          >by School of Computing</a
+        >, Telkom University 
+        <!-- <i class="fa fa-heart heart"></i> -->
       </div>
     </div>
   </footer>

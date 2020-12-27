@@ -7,16 +7,20 @@
         <md-table-cell md-label="Hash">{{ item.data }}</md-table-cell>
       </md-table-row>
     </md-table> -->
+    <md-button class="md-raised" :class="[ijazah ? 'md-warning' : '']" @click="changeBerkas" >Ijazah </md-button>
+    <md-button class="md-raised" :class="[!ijazah ? 'md-warning' : '']" @click="changeBerkas" >Transkrip</md-button>
     <md-table :table-header-color="tableHeaderColor">
       <md-table-row >
         <md-table-head>No</md-table-head>
+        <md-table-head>NIK</md-table-head>
         <md-table-head>Name</md-table-head>
         <md-table-head>Hash</md-table-head>
         <md-table-head>Download</md-table-head>
       </md-table-row>
       <md-table-row v-for="(item,index) in data" :key="index">
         <md-table-cell md-label="No" >{{ index+1 }}</md-table-cell>
-        <md-table-cell md-label="Name">{{ item.dekan }}</md-table-cell>
+        <md-table-cell md-label="NIK">NIK GAN</md-table-cell>
+        <md-table-cell md-label="Name">NAMA GAN</md-table-cell>
         <md-table-cell md-label="Hash">{{ item.data }}</md-table-cell>
         <md-table-cell md-label="download"><md-button class ="md-success md-hue-1" @click="downloadAsync(item.data)">Download</md-button></md-table-cell>
       </md-table-row>
@@ -37,6 +41,7 @@ export default {
   },
   data() {
     return {
+      ijazah : true,
       selected: [],
       users: [
         {
@@ -93,6 +98,9 @@ export default {
     
   },
   methods:{
+    changeBerkas(){
+      this.ijazah = !this.ijazah;
+    },
     async downloadAsync(hash){
       for await (const file of this.ipfs.get(hash)) {
 
