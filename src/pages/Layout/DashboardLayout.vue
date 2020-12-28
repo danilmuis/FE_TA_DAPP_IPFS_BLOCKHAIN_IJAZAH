@@ -7,14 +7,10 @@
       :sidebar-background-image="sidebarBackgroundImage"
     >
       <mobile-menu slot="content"></mobile-menu>
-      <a href="https://sivilchain.smartsupportku.com">
-      <sidebar-link to="#">
-        <!-- <a href="https://sivilchain.smartsupportku.com"> -->
+      <!-- <sidebar-link to="#">
         <md-icon>dashboard</md-icon>
         <p>Dashboard</p>
-        <!-- </a> -->
-      </sidebar-link>
-      </a>
+      </sidebar-link> -->
       <sidebar-link to="/admin/ijazah">
         <md-icon>description</md-icon>
         <p>Membuat Ijazah Baru</p>

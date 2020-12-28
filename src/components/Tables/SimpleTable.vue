@@ -5,14 +5,14 @@
     <md-table :table-header-color="tableHeaderColor">
       <md-table-row >
         <md-table-head>No</md-table-head>
-        <md-table-head>NIK</md-table-head>
+        <md-table-head>NIM</md-table-head>
         <md-table-head>Name</md-table-head>
         <md-table-head>Hash</md-table-head>
         <md-table-head>Download</md-table-head>
       </md-table-row>
-      <md-table-row v-for="(item,index) in data" :key="index">
+      <md-table-row v-for="(item,index) in berkas" :key="index">
         <md-table-cell md-label="No" >{{ index+1 }}</md-table-cell>
-        <md-table-cell md-label="NIK">{{item.nik}}</md-table-cell>
+        <md-table-cell md-label="NIM">{{item.nim}}</md-table-cell>
         <md-table-cell md-label="Name">{{item.nama}}</md-table-cell>
         <md-table-cell md-label="Hash">{{ item.data }}</md-table-cell>
         <md-table-cell md-label="download"><md-button class ="md-success md-hue-1" @click="downloadAsync(item.data)">Download</md-button></md-table-cell>
@@ -37,6 +37,7 @@ export default {
       ijazah : true,
       data:null,
       ipfs:null,
+      berkas:null,
     };
   },
   mounted(){
@@ -45,6 +46,7 @@ export default {
     getIjazah()
       .then(response =>{
         this.data = response;
+        this.berkas = this.data.filter((data) => data.berkas==this.ijazah);
       })
       .catch(errors => {
         //console.log(errors);
@@ -54,6 +56,7 @@ export default {
   methods:{
     changeBerkas(){
       this.ijazah = !this.ijazah;
+      this.berkas = this.data.filter((data) => data.berkas==this.ijazah);
     },
     async downloadAsync(hash){
       for await (const file of this.ipfs.get(hash)) {
