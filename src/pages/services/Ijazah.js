@@ -11,18 +11,6 @@ export const getIjazah  = ()=> {
             });
     }); 
 }
-export const getWeather  = ()=> {
-    return new Promise((resolve, reject) => {
-        axios
-            .get('http://54.163.242.157:3000/weather')
-            .then(response => {
-                resolve(response.data);
-            })
-            .catch(errors => {
-                reject(errors.response.data);
-            });
-    }); 
-}
 export const getFile  = (hash)=> {
     let formData = new FormData();
     formData.append("arg",hash)

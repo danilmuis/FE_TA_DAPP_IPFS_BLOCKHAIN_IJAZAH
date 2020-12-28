@@ -18,6 +18,8 @@ import Upload from "@/pages/Upload.vue";
 import CheckDocument2 from "@/pages/CheckDocument2.vue";
 import Dashboard2 from "@/pages/Dashboard2.vue";
 
+import Dashboard3 from "@/pages/Dashboard3.vue";
+
 const routes = [
   {
     path: "/admin",
@@ -92,12 +94,16 @@ const routes = [
     name: "Check Document",
     component: CheckDocument
   },
-  {
-    path : "/",
-    name : "main",
-    component : Dashboard2
-  },
-  
+  // {
+  //   path : "/",
+  //   name : "main",
+  //   component : Dashboard2
+  // },
+  // {
+  //   path: "/mdm",
+  //   name : "newDashboard",
+  //   component : Dashboard3
+  // }
   // {
   //   path : "/checker",
   //   name : "Check Document",

@@ -1,6 +1,20 @@
 <template>
-    <fragment>
-<body class="landing-page sidebar-collapse">
+  <fragment>
+    <!--
+=========================================================
+Material Kit - v2.0.7
+=========================================================
+
+Product Page: https://www.creative-tim.com/product/material-kit
+Copyright 2020 Creative Tim (https://www.creative-tim.com/)
+
+Coded by Creative Tim
+
+=========================================================
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. -->
+
+
   <nav class="navbar navbar-transparent navbar-color-on-scroll fixed-top navbar-expand-lg" color-on-scroll="100" id="sectionsNav">
     <div class="container">
       <div class="navbar-translate">
@@ -20,7 +34,7 @@
               <i class="material-icons">apps</i> Components
             </a>
             <div class="dropdown-menu dropdown-with-icons">
-              <a href="../index.html" class="dropdown-item">
+              <a href="/index.html" class="dropdown-item">
                 <i class="material-icons">layers</i> All Components
               </a>
               <a href="https://demos.creative-tim.com/material-kit/docs/2.0/getting-started/introduction.html" class="dropdown-item">
@@ -250,7 +264,28 @@
     </div>
   </footer>
   
-</body>
 
-    </fragment>
+
+    
+  </fragment>
 </template>
+
+<style>
+  /* @import "https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons";
+  @import "https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css";
+  @import "/assets/css/material-kit.css?v=2.0.7";
+  @import "/assets/demo/demo.css"; */
+</style>
+
+<script>
+  // import * from "/assets/js/core/jquery.min.js";
+  // import * from "/assets/js/core/popper.min.js";
+  // import * from "/assets/js/core/bootstrap-material-design.min.js";
+  // import * from "/assets/js/plugins/moment.min.js";
+  // import * from "/assets/js/plugins/bootstrap-datetimepicker.js";
+  // import * from "/assets/js/plugins/nouislider.min.js";
+  // import * from "/assets/js/material-kit.js?v=2.0.7";
+  export default{
+    name:"dashboard-baru"
+  }
+</script>

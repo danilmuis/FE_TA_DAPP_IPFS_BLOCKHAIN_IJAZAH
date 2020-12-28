@@ -34,7 +34,7 @@
 
 <script>
 import { SimpleTable } from "@/components";
-import { getFile,getWeather } from "./services";
+import { getFile} from "./services";
 import { saveAs } from 'file-saver';
 export default {
   components: {
@@ -43,25 +43,6 @@ export default {
   methods: {
     
     
-  },
-  mounted() {
-    // getWeather()
-    //     .then(response =>{
-    //       //console.log(response);
-    //       alert(JSON.stringify(response));
-    //       this.weather = JSON.stringify(response);
-    //     })
-    //     .catch(errors => {
-    //       console.log(errors);
-    //     });
-    
-  },
-  data(){
-    return { 
-      hash : "QmaGA5iJ3Qs8Hr3kTJ1bg6XYC6NLp56GmbrSFMarE2o9oG",
-      ipfs : null,
-      weather : null,
-    }
   }
 
 };

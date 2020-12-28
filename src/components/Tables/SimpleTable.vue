@@ -1,12 +1,5 @@
 <template>
   <div>
-    <!-- <md-table v-model="data" :table-header-color="tableHeaderColor">
-      <md-table-row slot="md-table-row" slot-scope="{ item }">
-        <md-table-cell md-label="No">{{ item.no }}</md-table-cell>
-        <md-table-cell md-label="Name">{{ item.dekan }}</md-table-cell>
-        <md-table-cell md-label="Hash">{{ item.data }}</md-table-cell>
-      </md-table-row>
-    </md-table> -->
     <md-button class="md-raised" :class="[ijazah ? 'md-warning' : '']" @click="changeBerkas" >Ijazah </md-button>
     <md-button class="md-raised" :class="[!ijazah ? 'md-warning' : '']" @click="changeBerkas" >Transkrip</md-button>
     <md-table :table-header-color="tableHeaderColor">
@@ -19,8 +12,8 @@
       </md-table-row>
       <md-table-row v-for="(item,index) in data" :key="index">
         <md-table-cell md-label="No" >{{ index+1 }}</md-table-cell>
-        <md-table-cell md-label="NIK">NIK GAN</md-table-cell>
-        <md-table-cell md-label="Name">NAMA GAN</md-table-cell>
+        <md-table-cell md-label="NIK">{{item.nik}}</md-table-cell>
+        <md-table-cell md-label="Name">{{item.nama}}</md-table-cell>
         <md-table-cell md-label="Hash">{{ item.data }}</md-table-cell>
         <md-table-cell md-label="download"><md-button class ="md-success md-hue-1" @click="downloadAsync(item.data)">Download</md-button></md-table-cell>
       </md-table-row>
@@ -42,45 +35,6 @@ export default {
   data() {
     return {
       ijazah : true,
-      selected: [],
-      users: [
-        {
-          name: "Dakota Rice",
-          salary: "$36,738",
-          country: "Niger",
-          city: "Oud-Turnhout"
-        },
-        {
-          name: "Minerva Hooper",
-          salary: "$23,738",
-          country: "Curaçao",
-          city: "Sinaai-Waas"
-        },
-        {
-          name: "Sage Rodriguez",
-          salary: "$56,142",
-          country: "Netherlands",
-          city: "Overland Park"
-        },
-        {
-          name: "Philip Chaney",
-          salary: "$38,735",
-          country: "Korea, South",
-          city: "Gloucester"
-        },
-        {
-          name: "Doris Greene",
-          salary: "$63,542",
-          country: "Malawi",
-          city: "Feldkirchen in Kārnten"
-        },
-        {
-          name: "Mason Porter",
-          salary: "$78,615",
-          country: "Chile",
-          city: "Gloucester"
-        }
-      ],
       data:null,
       ipfs:null,
     };
@@ -122,8 +76,6 @@ export default {
           mergedArray.set(item, offset);
           offset += item.length;
         });
-
-        // Should print an array with length 90788 (5x 16384 + 8868 your source arrays)
         var blob = await new Blob([mergedArray], {type: 'application/pdf'});
         saveAs(blob,new Date().getTime()+".pdf");
       }
