@@ -13,11 +13,11 @@
     }
 </script>
 <style>
-    .bg-blue {
+    /* .bg-blue {
         background-color:#1c3b61;
         text-align:right;
 
-    }
+    } */
     .title{
         color:#faf9e8;
         font-family: 'Raleway', sans-serif;
@@ -31,10 +31,10 @@
             height: 100%;
             font-size:12px;
         }
-        .bg-blue {
+        /* .bg-blue {
             background-color:#1c3b61;
             text-align:center;
 
-        }
+        } */
     }
 </style>

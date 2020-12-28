@@ -94,15 +94,11 @@
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     }
     .check2{
-        
         font-size:16px;
     }
     .check3{
-        
         font-size:16px; 
         margin-top: 20px;
-
-
     }
     .check-gambar{
         margin-top:50px;

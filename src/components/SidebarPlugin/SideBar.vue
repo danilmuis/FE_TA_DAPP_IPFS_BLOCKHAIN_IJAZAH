@@ -6,14 +6,14 @@
     :style="sidebarStyle"
   >
     <div class="logo">
-      <a href="/dashboard" class="simple-text logo-mini">
+      <a href="/" class="simple-text logo-mini">
         <div class="logo-img">
           <img :src="imgLogo" alt="" />
         </div>
       </a>
 
       <a
-        href="/dashboard"
+        href="/"
         class="simple-text logo-normal"
       >
         {{ title }}

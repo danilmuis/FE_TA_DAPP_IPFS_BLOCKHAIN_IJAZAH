@@ -208,8 +208,8 @@ import {
   StatsCard,
   ChartCard,
   NavTabsCard,
-  NavTabsTable,
-  OrderedTable
+  // NavTabsTable,
+  // OrderedTable
 } from "@/components";
 
 export default {
@@ -217,8 +217,8 @@ export default {
     StatsCard,
     ChartCard,
     NavTabsCard,
-    NavTabsTable,
-    OrderedTable
+    // NavTabsTable,
+    // OrderedTable
   },
   data() {
     return {

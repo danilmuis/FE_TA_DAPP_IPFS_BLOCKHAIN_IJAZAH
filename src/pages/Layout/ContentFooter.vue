@@ -25,7 +25,7 @@
       </nav>
       <div class="copyright text-center">
         &copy; 2020
-        <a href="" target="_blank"
+        <a href="https://bif.telkomuniversity.ac.id/" target="_blank"
           >by School of Computing</a
         >, Telkom University 
         <!-- <i class="fa fa-heart heart"></i> -->

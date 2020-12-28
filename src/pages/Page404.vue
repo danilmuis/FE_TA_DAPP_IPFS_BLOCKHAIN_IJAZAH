@@ -5,7 +5,7 @@
 				<h1>404</h1>
 				<h2>Page not found</h2>
 			</div>
-			<a href="/dashboard">Dashboard</a>
+			<a href="/">Dashboard</a>
 		</div>
 	</div>
 </template>

@@ -148,9 +148,9 @@
     }
 </script>
 <style>
-.bg-blue {
+/* .bg-blue {
         background-color:#1c3b61;
-    }
+    } */
     #particles-js {
   position: absolute;
   width: 100%;
