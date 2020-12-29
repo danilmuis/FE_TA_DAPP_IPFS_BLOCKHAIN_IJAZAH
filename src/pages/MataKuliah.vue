@@ -75,12 +75,10 @@ export default {
     }
   },
   methods: {
-    
     deleteRow(event){
       event.preventDefault();
       this.$emit("hapus");
     }
-    
   }
 };
 </script>

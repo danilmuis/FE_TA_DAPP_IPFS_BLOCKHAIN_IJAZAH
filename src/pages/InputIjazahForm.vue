@@ -129,14 +129,14 @@
           <div class="md-layout-item md-small-size-100 md-size-50">
             <md-field>
               <label>Pas Foto</label>
-              <md-file name="pas" accept="image/*" v-on:change="previewImage($event)"/>
+              <md-file name="pas" v-model="label_pas" accept="image/*" v-on:change="previewImage($event)"/>
             </md-field>
             <p class="error-msg" v-if="!$v.pas.required && displayError">Form harus diisi</p>
           </div>
           <div class="md-layout-item md-small-size-100 md-size-50">
             <md-field>
               <label>Logo Universitas</label>
-              <md-file name="logo" accept="image/*" v-on:change="previewImage($event)"/>
+              <md-file name="logo" v-model="label_logo" accept="image/*" v-on:change="previewImage($event)"/>
             </md-field>
             <p class="error-msg" v-if="!$v.logo.required && displayError">Form harus diisi</p>
           </div>
@@ -204,6 +204,8 @@ export default {
       pasImage:null,
       logoImage:null,
       displayError : false,
+      label_logo : '',
+      label_pas : '',
       error:{
         'border-bottom': '1px solid',
         'border-color':'#9c27b0 !important',
@@ -274,6 +276,30 @@ export default {
     }
   },
   methods: {
+    resetForm(){
+      this.nomor = '';
+      this.nama =  '';
+      this.tempat_lahir =  '';
+      this.tanggal_lahir =  '';
+      this.email =  '';
+      this.nim =  '';
+      this.lembaga =  '';
+      this.prodi =  '';
+      this.jenjang =  '';
+      this.gelar =  '';
+      this.tglLulus =  '';
+      this.rektor =  '';
+      this.nipRektor =  '';
+      this.dekan =  '';
+      this.nipDekan =  '';
+      this.pas =  '';
+      this.logo =  '';
+      this.pasImage = null;
+      this.logoImage = null;
+      this.label_logo = '';
+      this.label_pas = '';
+      this.displayError  =  false;
+    },
     validationStatus : function(validation){
       return typeof validation != "undefined" ? validation.$error : false;
     },
@@ -342,7 +368,7 @@ export default {
               icon: "success",
             }).
             then(()=>{
-              window.location.href = this.$route.path;
+              this.resetForm();
             });
         }).catch(errors =>{
             loading.close();
@@ -352,7 +378,6 @@ export default {
             });
         });
       }
-      
     }
   }
 };

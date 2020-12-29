@@ -163,14 +163,14 @@
                 <div class="md-layout-item md-small-size-100 md-size-50">
                   <md-field>
                     <label>Pas Foto</label>
-                    <md-file name="pas" accept="image/*" v-on:change="previewImage($event)"/>
+                    <md-file name="pas" v-model="label_pas" accept="image/*" v-on:change="previewImage($event)"/>
                   </md-field>
                   <p class="error-msg" v-if="!$v.pas.required && displayError">Form harus diisi</p>
                 </div>
                 <div class="md-layout-item md-small-size-100 md-size-50">
                   <md-field>
                     <label>Logo Universitas</label>
-                    <md-file name="logo" accept="image/*" v-on:change="previewImage($event)"/>
+                    <md-file name="logo" v-model="label_logo" accept="image/*" v-on:change="previewImage($event)"/>
                   </md-field>
                   <p class="error-msg" v-if="!$v.logo.required && displayError">Form harus diisi</p>
                 </div>
@@ -202,7 +202,7 @@
                 <div v-if="!formMK" class="md-layout-item md-size-100 text-left">
                   <md-field>
                     <label>Upload Data Matakuliah</label>
-                    <md-file name="fileMK" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" @change="setFileMK($event)" />
+                    <md-file name="fileMK" v-model="labelFile"  accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" @change="setFileMK($event)" />
                   </md-field>
                   <a href="../contoh_input_MK.xlsx"><md-button class="md-raised md-danger" >Contoh File Matakuliah</md-button></a>
                 </div>
@@ -271,13 +271,14 @@ export default {
       pasImage:null,
       logoImage:null,
       displayError : false,
+      formMK : true,
+      fileMK : null,
+      labelFile : '',
       error:{
         'border-bottom': '1px solid',
         'border-color':'#9c27b0 !important',
         'border-style':'double',
       },
-      formMK : true,
-      fileMK : null,
     };
   },
   validations: {
@@ -356,6 +357,46 @@ export default {
     }
   },
   methods: {
+    resetForm(){
+      this.submit = 0;
+      this.items =  [1];
+      this.jumlah  =  1;
+      this.nomor = '';
+      this.nomorRektor = '';
+      this.nama =  '';
+      this.tempat_lahir =  '';
+      this.tanggal_lahir =  '';
+      this.email =  '';
+      this.nim =  '';
+      this.lembaga =  '';
+      this.prodi =  '';
+      this.fakultas = '';
+      this.jenjang =  '';
+      this.ipk = '';
+      this.ta = '';
+      this.gelar =  '';
+      this.tglLulus =  '';
+      this.rektor =  '';
+      this.nipRektor =  '';
+      this.dekan =  '';
+      this.nipDekan =  '';
+      this.pas =  '';
+      this.logo =  '';
+      this.kode_matkul =  [];
+      this.matkul =  [];
+      this.semester =  [];
+      this.sks =  [];
+      this.nilai =  [];
+      this.pasImage = null;
+      this.logoImage = null;
+      this.displayError  =  false;
+      this.formMK  =  true;
+      this.fileMK  =  null;
+      this.labelFile  =  '';
+      this.label_pas = '';
+      this.label_logo = '';
+      this.swap();
+    },
     setFileMK(event){
       this.fileMK = event.target.files[0];
     },
@@ -487,7 +528,7 @@ export default {
                 icon: "success",
               }).
               then(()=>{
-                window.location.href = this.$route.path;
+                this.resetForm();
               });
           }).catch(errors =>{
               loading.close();
