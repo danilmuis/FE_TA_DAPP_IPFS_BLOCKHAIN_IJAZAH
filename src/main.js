@@ -41,6 +41,11 @@ const router = new VueRouter({
   routes, // short for routes: routes
   linkExactActiveClass: "nav-item active"
 });
+import { BootstrapVue, IconsPlugin } from 'bootstrap-vue';
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap-vue/dist/bootstrap-vue.css';
+Vue.use(BootstrapVue);
+Vue.use(IconsPlugin);
 Vue.prototype.$Chartist = Chartist;
 Vue.use(Vuelidate)
 Vue.use(VueRouter);
