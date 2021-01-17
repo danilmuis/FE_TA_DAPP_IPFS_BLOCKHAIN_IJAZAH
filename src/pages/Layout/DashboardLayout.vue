@@ -81,6 +81,11 @@ export default {
       sidebarBackground: "green",
       sidebarBackgroundImage: require("@/assets/img/sidebar-2.jpg")
     };
+  },
+  beforeCreate: function () {
+    if (!this.$session.exists()) {
+      this.$router.push('/')
+    }
   }
 };
 </script>

@@ -35,6 +35,12 @@ import 'vue2-dropzone/dist/vue2Dropzone.min.css';
 
 import Vuesax from 'vuesax';
 import 'vuesax/dist/vuesax.css';
+
+// ============================
+import VueSession from 'vue-session';
+Vue.use(VueSession);
+//=============================
+
 // configure router
 const router = new VueRouter({
   mode: 'history',
