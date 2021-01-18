@@ -12,10 +12,10 @@
         <md-icon>description</md-icon>
         <p>Registrasi Staff</p>
       </sidebar-link>
-      <sidebar-link to="/superAdmin/regisSuperAdmin">
+      <!-- <sidebar-link to="/superAdmin/regisSuperAdmin">
         <md-icon>description</md-icon>
         <p>Registrasi Super Admin</p>
-      </sidebar-link>
+      </sidebar-link> -->
       <sidebar-link to="/superAdmin/table">
         <md-icon>content_paste</md-icon>
         <p>Daftar Berkas</p>
@@ -53,7 +53,18 @@ export default {
   },
   beforeCreate: function () {
     if (!this.$session.exists()) {
+      
       this.$router.push('/')
+      
+    } else {
+      const user = this.$session.get('user');
+      if (user.role !== 1) {
+        if (user.role === 2) {
+          this.$router.push('/admin')
+        } else if (user.role === 3 || user.role === 4 || user.role === 5 || user.role === 6) {
+          this.$router.push('/staff')
+        } 
+      }
     }
   }
 };

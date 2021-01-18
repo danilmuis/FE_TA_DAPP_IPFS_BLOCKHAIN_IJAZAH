@@ -52,7 +52,7 @@ export default {
         "Ryan Howard",
         "Kevin Malone"
       ],
-      role: 0
+      role
     };
   },
   methods: {

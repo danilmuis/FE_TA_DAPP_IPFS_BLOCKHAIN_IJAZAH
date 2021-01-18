@@ -23,6 +23,7 @@
                   <md-field>
                     <label>Password</label>
                     <md-input v-model="regisData.password" name="password" type="password"></md-input>
+                    <p class="error-msg" v-if="!$v.logo.required && displayError">Form harus diisi</p>
                   </md-field>
                 </div>
 
@@ -41,7 +42,7 @@
 <script>
 import { regisSuperAdmin } from "./services";
 import { required,email,numeric } from 'vuelidate/lib/validators'
-import { usernameLength,alphaSpace,alphaNumeric } from "./validators";
+import { passwordLength,alphaSpace,alphaNumeric } from "./validators";
 
 export default {
   name: "input-transkrip-form",

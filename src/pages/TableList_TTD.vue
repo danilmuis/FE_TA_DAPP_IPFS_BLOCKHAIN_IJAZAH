@@ -64,8 +64,21 @@ export default {
       this.setItems();
     },
     async handleSignature(val){
-      val.kaprodi = true;
-      this.setItems();
+      swal({
+        title: "Anda yakin?",
+        icon: "warning",
+        buttons: true
+      })
+      .then((confirm) => {
+        if (confirm) {
+          swal("Berkas Berhasil Di Tanda Tangani", {
+            icon: "success",
+          });
+          val.kaprodi = true;
+          this.setItems();
+        }
+      });
+      
       console.log(this.data)
     },
     handlePerPage(val) {

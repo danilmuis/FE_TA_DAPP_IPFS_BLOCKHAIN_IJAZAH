@@ -35,6 +35,7 @@
                       <md-option value="5">Wakil Rektor</md-option>
                       <md-option value="6">Rektor</md-option>
                       <md-option value="2">Creator</md-option>
+                      <md-option value="1">Super Admin</md-option>
                     </md-select>
                   </md-field>
                 </div>
@@ -54,7 +55,7 @@
 <script>
 import { regisStaff } from "./services";
 import { required,email,numeric } from 'vuelidate/lib/validators'
-import { usernameLength,alphaSpace,alphaNumeric } from "./validators";
+import { passwordLength,alphaSpace,alphaNumeric } from "./validators";
 import swal from 'sweetalert';
 export default {
     name: "input-transkrip-form",
@@ -119,5 +120,6 @@ export default {
     height:200px;
     width:300px;
   }
+  
   
 </style>
