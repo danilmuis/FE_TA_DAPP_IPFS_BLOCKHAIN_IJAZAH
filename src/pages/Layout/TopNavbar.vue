@@ -52,7 +52,7 @@ export default {
         "Ryan Howard",
         "Kevin Malone"
       ],
-      role
+      role: ''
     };
   },
   methods: {
@@ -62,9 +62,6 @@ export default {
     logout() {
       this.$session.destroy();
       this.$router.push('/');
-    },
-    setRoleName() {
-      
     }
   },
   mounted(){

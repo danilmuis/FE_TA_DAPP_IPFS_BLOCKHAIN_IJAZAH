@@ -38,6 +38,7 @@ import { DataTable2 } from "@/components";
 import { getFile} from "./services";
 import { saveAs } from 'file-saver';
 import { getIjazah } from "@/pages/services"
+import { signature } from "@/pages/services"
 export default {
   components: {
     DataTable2
@@ -53,7 +54,15 @@ export default {
         });
         this.items = res;
       }else{
-        this.items = this.data.filter((data) => data.berkas==this.ijazah);
+        if (this.role === 4) {  // dekan
+          this.items = this.data.filter((data) => data.berkas==this.ijazah && data.kaprodi==true);
+        } else if (this.role === 5) { //warek
+          this.items = this.data.filter((data) => data.berkas==this.ijazah && data.kaprodi==true && data.dekan==true);
+        } else if (this.role === 6) { //rektor
+          this.items = this.data.filter((data) => data.berkas==this.ijazah && data.kaprodi==true && data.dekan==true && data.warek==true);
+        } else { // kaprodi
+          this.items = this.data.filter((data) => data.berkas==this.ijazah);
+        }
       }
       this.meta.total = this.items.length;
       this.items = this.items.slice((current_page-1)*this.per_page,this.per_page*(current_page));
@@ -71,16 +80,36 @@ export default {
       })
       .then((confirm) => {
         if (confirm) {
-          swal("Berkas Berhasil Di Tanda Tangani", {
-            icon: "success",
+          signature({
+            hash: val.data
+          })
+          .then(response =>{
+            if (this.role === 3) {
+              val.kaprodi = true;
+            } else if (this.role === 4) {
+              val.dekan = true;
+            } else if (this.role === 5) {
+              val.warek = true;
+            } else if (this.role === 6) {
+              val.rektor = true;
+            }
+            swal({
+              title : "Berkas Berhasil Di Tanda Tangani",
+              icon: "success",
+            });
+          })
+          .catch(errors => {
+            console.log(errors)
+            swal({
+              title : "Server Error",
+              icon: "error",
+            });
           });
-          val.kaprodi = true;
-          val.dekan = true;
+
           this.setItems();
         }
       });
       
-      console.log(this.data)
     },
     handlePerPage(val) {
       this.per_page = val;
@@ -124,9 +153,12 @@ export default {
       sortByDesc: false,
       data : [],
       ijazah:true,
+      role: 0
     }
   },
   mounted(){
+    const user = this.$session.get('user');
+    this.role = user.role;
     Array.prototype.sortOn = function(key){
       this.sort(function(a, b){
           if(a[key] < b[key]){
@@ -145,6 +177,7 @@ export default {
         this.setItems();
       })
       .catch(errors => {
+        console.log(errors)
         swal({
           title : "Server Error",
           icon: "error",
