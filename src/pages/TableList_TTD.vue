@@ -75,6 +75,7 @@ export default {
             icon: "success",
           });
           val.kaprodi = true;
+          val.dekan = true;
           this.setItems();
         }
       });

@@ -1,7 +1,7 @@
 import {getIjazah, sendIjazah, getFile} from "./Ijazah";
 import {sendTranskrip} from "./Transkrip";
 import {login} from "./Login";
-import {regisStaff, regisSuperAdmin} from "./Registrasi";
+import {regisStaff} from "./Registrasi";
 export { 
     getIjazah,
     sendIjazah,
@@ -9,5 +9,4 @@ export {
     getFile,
     login,
     regisStaff,
-    regisSuperAdmin
 };

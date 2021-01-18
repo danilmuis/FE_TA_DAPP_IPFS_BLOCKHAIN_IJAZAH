@@ -28,6 +28,7 @@ export const getFile  = (hash)=> {
 
 
 export const sendIjazah  = (data)=> {
+    console.log(data);
     let formData = new FormData();
     formData.append("nomor",data.nomor)
     formData.append("logo", data.logo,data.logo.name);

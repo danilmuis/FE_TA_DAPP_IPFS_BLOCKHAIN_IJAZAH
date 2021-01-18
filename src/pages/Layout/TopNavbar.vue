@@ -60,8 +60,8 @@ export default {
       this.$sidebar.displaySidebar(!this.$sidebar.showSidebar);
     },
     logout() {
-      this.$session.destroy()
-      this.$router.push('/')
+      this.$session.destroy();
+      this.$router.push('/');
     },
     setRoleName() {
       

@@ -28,6 +28,7 @@
                 <template v-slot:cell(check)="row">
                     <b-checkbox v-model="row.item.kaprodi" disabled> Kaprodi </b-checkbox>
                     <b-checkbox v-model="row.item.dekan" disabled> Dekan </b-checkbox>
+                    <b-checkbox v-model="row.item.warek" disabled> Wakil Rektor </b-checkbox>
                     <b-checkbox v-model="row.item.rektor" disabled> Rektor </b-checkbox>
                 </template>
                 <template v-slot:cell(signature)="row">
