@@ -40,7 +40,7 @@
   </div>
 </template>
 <script>
-import { regisSuperAdmin } from "./services";
+// import { regisSuperAdmin } from "./services";
 import { required,email,numeric } from 'vuelidate/lib/validators'
 import { passwordLength,alphaSpace,alphaNumeric } from "./validators";
 
