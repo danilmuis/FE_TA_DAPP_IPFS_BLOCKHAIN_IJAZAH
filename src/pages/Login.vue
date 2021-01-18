@@ -76,15 +76,16 @@ export default {
                     this.$router.push('/superAdmin')    
                 } else if (response.user.role == 2) {
                     this.$router.push('/admin')
-                } else if (response.user.role == 3) {
-                    this.$router.push('/kaprodi')
-                } else if (response.user.role == 4) {
-                    this.$router.push('/dekan')
-                } else if (response.user.role == 5) {
-                    this.$router.push('/warek')
-                } else if (response.user.role == 6) {
-                    this.$router.push('/rektor')
-                }
+                } else if (response.user.role == 3  || response.user.role == 4 || response.user.role == 5 || response.user.role == 6) {
+                    this.$router.push('/staff')
+                } 
+                // else if (response.user.role == 4) {
+                //     this.$router.push('/dekan')
+                // } else if (response.user.role == 5) {
+                //     this.$router.push('/warek')
+                // } else if (response.user.role == 6) {
+                //     this.$router.push('/rektor')
+                // }
               }
               
             })

@@ -2,7 +2,7 @@ import axios from "axios";
 export const regisSuperAdmin  = (data)=> {
     return new Promise((resolve, reject) => {
         axios
-            .post('http://192.168.100.96:8090/regisSuperAdmin', data)
+            .post(process.env.VUE_APP_ENDPOINT_API+`/regisSuperAdmin`, data)
             .then(response => {
                 resolve(response.data);
             })
@@ -15,7 +15,7 @@ export const regisSuperAdmin  = (data)=> {
 export const regisStaff  = (data)=> {
     return new Promise((resolve, reject) => {
         axios
-            .post('http://192.168.100.96:8090/regisStaff', data)
+            .post(process.env.VUE_APP_ENDPOINT_API+`/regisStaff`, data)
             .then(response => {
                 resolve(response.data);
             })
