@@ -58,7 +58,6 @@ export default {
   },
   methods: {
     setItems(){
-      console.log(this.data)
       let current_page = this.search == '' ? this.current_page:1
       if(this.search != ''){
         this.items = this.data.filter((data) => data.berkas==this.ijazah);
