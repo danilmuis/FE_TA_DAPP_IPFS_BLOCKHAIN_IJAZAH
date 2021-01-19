@@ -1,7 +1,7 @@
 <template>
   <div class="loginBack content">
     <div class="md-layout" style="margin: auto; width: fit-content;">
-      <div >
+      <div style="margin: auto auto;" >
 
         <form @submit.prevent="login" style="margin-top: 175px;">
           <md-card>
