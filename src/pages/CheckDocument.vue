@@ -69,22 +69,6 @@
                     icon: "error",
                 });
             }
-        },
-        beforeCreate: function () {
-            if (!this.$session.exists()) {
-            
-                this.$router.push('/login')
-            
-            } else {
-                const user = this.$session.get('user');
-                if (user.role !== 2) {
-                    if (user.role === 1) {
-                        this.$router.push('/superAdmin')
-                    } else if (user.role === 3 || user.role === 4 || user.role === 5 || user.role === 6) {
-                        this.$router.push('/staff')
-                    } 
-                }
-            }
         }
     }
 </script>

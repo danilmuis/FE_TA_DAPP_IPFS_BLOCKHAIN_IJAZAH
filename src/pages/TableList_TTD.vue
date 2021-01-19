@@ -80,23 +80,25 @@ export default {
       })
       .then((confirm) => {
         if (confirm) {
+          if (this.role === 3) {
+            val.kaprodi = true;
+          } else if (this.role === 4) {
+            val.dekan = true;
+          } else if (this.role === 5) {
+            val.warek = true;
+          } else if (this.role === 6) {
+            val.rektor = true;
+          }
+          swal({
+              title : "Berkas Berhasil Di Tanda Tangani",
+              icon: "success",
+            });
+            
           signature({
             hash: val.data
           })
           .then(response =>{
-            if (this.role === 3) {
-              val.kaprodi = true;
-            } else if (this.role === 4) {
-              val.dekan = true;
-            } else if (this.role === 5) {
-              val.warek = true;
-            } else if (this.role === 6) {
-              val.rektor = true;
-            }
-            swal({
-              title : "Berkas Berhasil Di Tanda Tangani",
-              icon: "success",
-            });
+            
           })
           .catch(errors => {
             console.log(errors)
