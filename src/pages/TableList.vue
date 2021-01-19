@@ -58,6 +58,7 @@ export default {
   },
   methods: {
     setItems(){
+      console.log(this.data)
       let current_page = this.search == '' ? this.current_page:1
       if(this.search != ''){
         this.items = this.data.filter((data) => data.berkas==this.ijazah);
@@ -124,7 +125,8 @@ export default {
         {key: 'no', sortable: false},
         {key: 'nim', sortable: true, label: 'NIM'},
         {key: 'nama', sortable: true},
-        {key: 'data', sortable: false, label: 'Hash'},
+        {key: 'nomor', sortable: false, label: 'Nomor'},
+        {key: 'check', sortable: false, label: 'TTD'},
         {key: 'download', sortable: false}
       ],
       items: [],

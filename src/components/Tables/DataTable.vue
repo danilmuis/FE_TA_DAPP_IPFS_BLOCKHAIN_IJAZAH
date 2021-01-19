@@ -25,8 +25,16 @@
                 <template v-slot:cell(no)="row">
                     {{row.index+1}}
                 </template>
+                <template v-slot:cell(check)="row">
+                    <b-checkbox v-model="row.item.kaprodi" disabled> Kaprodi </b-checkbox>
+                    <b-checkbox v-model="row.item.dekan" disabled> Dekan </b-checkbox>
+                    <b-checkbox v-model="row.item.warek" disabled> Wakil Rektor </b-checkbox>
+                    <b-checkbox v-model="row.item.rektor" disabled> Rektor </b-checkbox>
+                </template>
                 <template v-slot:cell(download)="row">
-                    <md-button class ="md-success md-hue-1" @click="download(row.item.data)">Download</md-button>
+                    <md-button class ="md-success md-hue-1" 
+                        :disabled="!row.item.rektor"
+                        @click="download(row.item.data)">Download</md-button>
                 </template>
             </b-table>
         </div>
@@ -69,7 +77,8 @@ export default {
     data() {
         return {
             sortBy: null,
-            sortDesc: false
+            sortDesc: false,
+            role: 0
         }
     },
     watch: {
@@ -99,6 +108,10 @@ export default {
         search: _.debounce(function (e) {
             this.$emit('search', e.target.value)
         }, 500),
+    },
+    mounted(){
+        const user = this.$session.get('user');
+        this.role = user.role;
     }
 }
 </script>
