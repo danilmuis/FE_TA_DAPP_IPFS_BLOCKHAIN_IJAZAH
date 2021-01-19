@@ -54,11 +54,11 @@ export default {
         });
         this.items = res;
       }else{
-        if (this.role === 4) {  // dekan
+        if (this.role == 4) {  // dekan
           this.items = this.data.filter((data) => data.berkas==this.ijazah && data.kaprodi==true);
-        } else if (this.role === 5) { //warek
+        } else if (this.role == 5) { //warek
           this.items = this.data.filter((data) => data.berkas==this.ijazah && data.kaprodi==true && data.dekan==true);
-        } else if (this.role === 6) { //rektor
+        } else if (this.role == 6) { //rektor
           this.items = this.data.filter((data) => data.berkas==this.ijazah && data.kaprodi==true && data.dekan==true && data.warek==true);
         } else { // kaprodi
           this.items = this.data.filter((data) => data.berkas==this.ijazah);
@@ -80,20 +80,16 @@ export default {
       })
       .then((confirm) => {
         if (confirm) {
-          if (this.role === 3) {
+          if (this.role == 3) {
             val.kaprodi = true;
-          } else if (this.role === 4) {
+          } else if (this.role == 4) {
             val.dekan = true;
-          } else if (this.role === 5) {
+          } else if (this.role == 5) {
             val.warek = true;
-          } else if (this.role === 6) {
+          } else if (this.role == 6) {
             val.rektor = true;
           }
-          swal({
-              title : "Berkas Berhasil Di Tanda Tangani",
-              icon: "success",
-            });
-            
+          
           signature({
             hash: val.data
           })
@@ -107,7 +103,10 @@ export default {
               icon: "error",
             });
           });
-
+          swal({
+              title : "Berkas Berhasil Di Tanda Tangani",
+              icon: "success",
+            });
           this.setItems();
         }
       });

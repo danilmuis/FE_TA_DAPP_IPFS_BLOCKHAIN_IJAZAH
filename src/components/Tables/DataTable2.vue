@@ -33,10 +33,10 @@
                 </template>
                 <template v-slot:cell(signature)="row">
                     <div class="check" 
-                        v-if="(row.item.kaprodi == true && role === 3) || 
-                            (row.item.dekan == true && role === 4) || 
-                            (row.item.warek == true && role === 5) || 
-                            (row.item.rektor == true && role === 6)"
+                        v-if="(row.item.kaprodi == true && role == 3) || 
+                            (row.item.dekan == true && role == 4) || 
+                            (row.item.warek == true && role == 5) || 
+                            (row.item.rektor == true && role == 6)"
                         >Telah Di Tanda Tangan</div>
                     <md-button class ="md-success md-hue-1" 
                         v-else
