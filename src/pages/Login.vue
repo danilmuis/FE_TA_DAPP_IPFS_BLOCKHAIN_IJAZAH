@@ -67,7 +67,7 @@ export default {
               password: this.loginData.password
             })
             .then(response =>{
-              console.log(response)
+              // console.log(response)
               if (response.status === 'OK') {
                 this.$session.start()
                 this.$session.set('user',response.user)
@@ -90,7 +90,7 @@ export default {
               
             })
             .catch(errors => {
-              console.log(errors)
+              // console.log(errors)
               swal({
                 title : "Email atau Password Salah",
                 icon: "error",

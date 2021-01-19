@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const signature  = (data)=> {
-    console.log(data);
+    // console.log(data);
     return new Promise((resolve, reject) => {
         axios
             .post(process.env.VUE_APP_ENDPOINT_API+`/staff/signature`, data)
@@ -9,7 +9,7 @@ export const signature  = (data)=> {
                 resolve(response.data);
             })
             .catch(errors => {
-                console.log(errors);
+                // console.log(errors);
                 reject(errors.response.data);
             });
     }); 

@@ -101,7 +101,7 @@ export default {
             this.regisData.role=''
           })
           .catch(errors => {
-            console.log(errors)
+            // console.log(errors)
             swal({
               title : "Email Telah Terdaftar",
               icon: "error",

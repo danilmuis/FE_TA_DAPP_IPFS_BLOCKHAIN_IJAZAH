@@ -83,7 +83,7 @@ export default {
           this.regisData.password=''
         })
         .catch(errors => {
-          console.log(errors)
+          // console.log(errors)
           swal({
             title : "Email Telah Terdaftar",
             icon: "error",

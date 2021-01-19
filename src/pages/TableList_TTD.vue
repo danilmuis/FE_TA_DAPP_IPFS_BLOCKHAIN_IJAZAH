@@ -94,10 +94,10 @@ export default {
             role : this.role
           })
           .then(response =>{
-            console.log(response);
+            // console.log(response);
           })
           .catch(errors => {
-            console.log(errors)
+            // console.log(errors)
             swal({
               title : "Server Error",
               icon: "error",
@@ -178,7 +178,7 @@ export default {
         this.setItems();
       })
       .catch(errors => {
-        console.log(errors)
+        // console.log(errors)
         swal({
           title : "Server Error",
           icon: "error",
