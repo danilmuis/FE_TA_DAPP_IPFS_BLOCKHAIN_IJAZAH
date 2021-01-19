@@ -89,12 +89,12 @@ export default {
           } else if (this.role == 6) {
             val.rektor = true;
           }
-          
           signature({
-            hash: val.data
+            hash: val.data,
+            role : this.role
           })
           .then(response =>{
-            
+            console.log(response);
           })
           .catch(errors => {
             console.log(errors)
