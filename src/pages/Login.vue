@@ -75,7 +75,7 @@ export default {
                 if (response.user.role == 1) {
                     this.$router.push('/superAdmin')    
                 } else if (response.user.role == 2) {
-                    this.$router.push('/admin')
+                    this.$router.push('/')
                 } else if (response.user.role == 3  || response.user.role == 4 || response.user.role == 5 || response.user.role == 6) {
                     this.$router.push('/staff')
                 } 

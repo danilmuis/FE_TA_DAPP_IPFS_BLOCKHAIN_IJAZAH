@@ -32,7 +32,15 @@
                     <b-checkbox v-model="row.item.rektor" disabled> Rektor </b-checkbox>
                 </template>
                 <template v-slot:cell(signature)="row">
-                    <md-button class ="md-success md-hue-1" @click="signature(row.item)">Signature</md-button>
+                    <div class="check" 
+                        v-if="(row.item.kaprodi == true && role === 3) || 
+                            (row.item.dekan == true && role === 4) || 
+                            (row.item.warek == true && role === 5) || 
+                            (row.item.rektor == true && role === 6)"
+                        >Telah Di Tanda Tangan</div>
+                    <md-button class ="md-success md-hue-1" 
+                        v-else
+                        @click="signature(row.item)">Signature</md-button>
                 </template>
             </b-table>
         </div>
@@ -72,6 +80,7 @@ export default {
         return {
             sortBy: null,
             sortDesc: false,
+            role: 0
         }
     },
     watch: {
@@ -101,6 +110,10 @@ export default {
         search: _.debounce(function (e) {
             this.$emit('search', e.target.value)
         }, 500),
+    },
+    mounted(){
+        const user = this.$session.get('user');
+        this.role = user.role;
     }
 }
 </script>
