@@ -61,7 +61,8 @@ export default {
     },
     logout() {
       this.$session.destroy();
-      this.$router.push('/');
+      this.$router.push('/login');
+
     }
   },
   mounted(){
