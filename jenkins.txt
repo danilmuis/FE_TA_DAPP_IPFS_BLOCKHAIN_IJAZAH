@@ -1,0 +1,20 @@
+install jenkins
+https://blog.tentamen.eu/jenkins-and-github-integration-using-webhooks/
+pada github set token
+
+settings > developer settings > pernoal access token
+generate new token > set name
+set permission > admin:repo_hook : repo
+generate token
+copy token ke jenkins
+
+pada jenkins
+tambahkan credential
+pilih secret text
+paste token tadi
+
+manage jenkins > configure system > github
+add github server > set name > set credentials yang tadi > apply > test connection 
+
+buat 
+webhook url : http://linkweb:8080/github-webhook
