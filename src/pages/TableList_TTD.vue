@@ -94,19 +94,19 @@ export default {
             role : this.role
           })
           .then(response =>{
-            // console.log(response);
+            swal({
+              title : "Berkas Berhasil Di Tanda Tangani",
+              icon: "success",
+            });
           })
           .catch(errors => {
-            // console.log(errors)
+            
             swal({
               title : "Server Error",
               icon: "error",
             });
           });
-          swal({
-              title : "Berkas Berhasil Di Tanda Tangani",
-              icon: "success",
-            });
+          
           this.setItems();
         }
       });
