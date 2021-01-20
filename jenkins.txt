@@ -18,3 +18,6 @@ add github server > set name > set credentials yang tadi > apply > test connecti
 
 buat 
 webhook url : http://linkweb:8080/github-webhook
+
+
+clone project menggunakan ssh lalu masukin ssh private key ke github
