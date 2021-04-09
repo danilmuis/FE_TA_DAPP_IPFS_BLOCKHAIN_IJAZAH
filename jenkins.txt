@@ -16,7 +16,9 @@ paste token tadi
 manage jenkins > configure system > github
 add github server > set name > set credentials yang tadi > apply > test connection 
 
-buat 
+buat new item > freestyle porject
+masukin gitnya pake ssh dan credentialnya privatekey kita
+build trigger > github hook trigger for GITScm polling
 webhook url : http://linkweb:8080/github-webhook
 
 
