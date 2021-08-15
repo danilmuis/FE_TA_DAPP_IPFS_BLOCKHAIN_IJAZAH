@@ -13,7 +13,7 @@
             <!-- <simple-table table-header-color="green"></simple-table> -->
             <md-button class="md-raised" :class="[ijazah ? 'md-warning' : '']" @click="changeBerkas" >Ijazah </md-button>
             <md-button class="md-raised" :class="[!ijazah ? 'md-warning' : '']" @click="changeBerkas" >Transkrip</md-button>
-            <data-table 
+            <data-table-skl
               :items="items" 
               :fields="fields" 
               :meta="meta" 
@@ -45,16 +45,15 @@
 </template>
 
 <script>
-import { SimpleTable } from "@/components";
-import { DataTable } from "@/components";
-
+import swal from 'sweetalert';
+import { DataTableSKL } from "@/components";
 import { getFile} from "./services";
 import { saveAs } from 'file-saver';
 import { getIjazah } from "@/pages/services"
 export default {
   components: {
     // SimpleTable
-    DataTable
+    DataTableSKL
   },
   methods: {
     setItems(){

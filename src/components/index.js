@@ -9,6 +9,7 @@ import StatsCard from "./Cards/StatsCard.vue";
 import SimpleTable from "./Tables/SimpleTable.vue";
 import DataTable from "./Tables/DataTable.vue";
 import DataTable2 from "./Tables/DataTable2.vue";
+import DataTableSKL from "./Tables/DataTableSKL.vue";
 
 export {
   ChartCard,
@@ -18,5 +19,6 @@ export {
   // OrderedTable,
   SimpleTable,
   DataTable,
-  DataTable2
+  DataTable2,
+  DataTableSKL
 };

@@ -18,15 +18,46 @@ import Main2 from "@/pages/Main2.vue";
 import CheckDocument from "@/pages/CheckDocument.vue";
 import Page404 from "@/pages/Page404.vue";
 
+import FormRegistrasiSKL from "@/pages/FormRegistrasiSKL.vue";
 
-
+import StaffDaftarPengajuanSKL from "@/pages/Staff/DaftarPengajuanSKL.vue";
+import WadekDaftarPengajuanSKL from "@/pages/Wadek/DaftarPengajuanSKL.vue";
 const routes = [
+  {
+    path: "/login",
+    name: "login",
+    component: Login
+  },
+  {
+    path: "/checker",
+    name: "Check Document",
+    component: CheckDocument
+  },
+  {
+    path: "*",
+    name: "NOT FOUND",
+    component: Page404
+  },
+  {
+    path: "/registrasi-skl",
+    name: "Form Registrasi SKL Mahasiswa",
+    component: FormRegistrasiSKL
+  },
+  {
+    path: "/staff/daftar-skl",
+    name: "Daftar SKL Mahasiswa",
+    component: StaffDaftarPengajuanSKL
+  },
+  {
+    path: "/wadek/daftar-skl",
+    name: "Daftar SKL Mahasiswa",
+    component: WadekDaftarPengajuanSKL
+  },
   {
     path: "/admin",
     component: DashboardLayout,
     redirect: "/admin/ijazah",
     children: [
-      
       {
         path: "dashboard",
         name: "Dashboard",
@@ -64,7 +95,6 @@ const routes = [
     component: DashboardLayout_SA,
     redirect: "/superAdmin/regisStaff",
     children: [
-      
       {
         path: "dashboard_sa",
         name: "Dashboard",
@@ -102,7 +132,6 @@ const routes = [
     component: DashboardLayout_Staff,
     redirect: "/staff/table",
     children: [
-      
       {
         path: "dashboard_staff",
         name: "Dashboard",
@@ -131,7 +160,6 @@ const routes = [
     component: DashboardLayout_Staff,
     redirect: "/kaprodi/table",
     children: [
-      
       {
         path: "dashboard_kaprodi",
         name: "Dashboard",
@@ -160,7 +188,6 @@ const routes = [
     component: DashboardLayout_Staff,
     redirect: "/dekan/table",
     children: [
-      
       {
         path: "dashboard_dekan",
         name: "Dashboard",
@@ -217,7 +244,6 @@ const routes = [
     component: DashboardLayout_Staff,
     redirect: "/rektor/table",
     children: [
-      
       {
         path: "dashboard_rektor",
         name: "Dashboard",
@@ -239,29 +265,7 @@ const routes = [
         component: Notifications
       }
     ]
-  },
-
-  {
-    
-    path: "/login",
-    name: "login",
-    component: Login
-    
-  },
-  {
-    path: "/checker",
-    name: "Check Document",
-    component: CheckDocument
-  },
-  {
-    path: "*",
-    name: "NOT FOUND",
-    component: Page404
   }
 ];
 
 export default routes;
-
-
-
-process.env.VUE_APP_ENDPOINT_API

@@ -24,3 +24,8 @@ export const regisStaff  = (data)=> {
             });
     }); 
 }
+
+export const registrasi_SKL = (data) => {
+    return new Promise((resolve, reject) => {
+    })
+}

@@ -90,7 +90,6 @@ export default {
               
             })
             .catch(errors => {
-              // console.log(errors)
               swal({
                 title : "Email atau Password Salah",
                 icon: "error",
