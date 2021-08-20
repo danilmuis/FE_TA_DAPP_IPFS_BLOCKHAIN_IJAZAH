@@ -30,7 +30,7 @@ export const isNumber = value => {
     return value.match(/\d+/g) ? true : false;
 };
 export const alphaSpace = value =>{
-    return value.match(/[a-zA-Z][a-zA-Z ]+[a-zA-Z]$/g) ? true : false;
+    return value.match(/[a-zA-Z0-9][a-zA-Z0-9 ]+[a-zA-Z0-9]$/g) ? true : false;
 }
 export const alphaNumeric = value =>{
     return value.match(/^[\w\-\s]+$/) ? true : false;

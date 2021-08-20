@@ -50,6 +50,8 @@ const router = new VueRouter({
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
+
+import Toasted from 'vue-toasted'
 // import axios from 'axios';
 // import VueAxios from 'vue-axios';
 // axios.defaults.withCredentials = true;
@@ -65,6 +67,19 @@ Vue.use(GlobalComponents);
 Vue.use(GlobalDirectives);
 Vue.use(Notifications);
 Vue.use(Vuesax);
+
+Vue.use(Toasted, {
+  duration: 2000,
+  position: 'top-right',
+  theme: "outline",
+  icon : 'check_circle',
+  action : {
+    text : 'X',
+    onClick : (e, toastObject) => {
+        toastObject.goAway(0);
+    }
+  }
+});
 /* eslint-disable no-new */
 new Vue({
   el: "#app",

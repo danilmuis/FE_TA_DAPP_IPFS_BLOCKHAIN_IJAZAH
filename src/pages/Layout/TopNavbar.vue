@@ -66,7 +66,8 @@ export default {
     }
   },
   mounted(){
-    const user = this.$session.get('user');
+    // const user = this.$session.get('user');
+    let user = {'role':6};
     this.role = user.role;
     if (user.role == 1) {
       this.role = 'Super Admin'

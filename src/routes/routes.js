@@ -1,6 +1,7 @@
 import DashboardLayout from "@/pages/Layout/DashboardLayout.vue";
 import DashboardLayout_SA from "@/pages/Layout/DashboardLayout_SA.vue";
 import DashboardLayout_Staff from "@/pages/Layout/DashboardLayout_Staff.vue";
+import DashboardLayout_Wadek from "@/pages/Layout/DashboardLayout_Wadek.vue";
 import Login from "@/pages/Login.vue";
 
 import Dashboard from "@/pages/Dashboard.vue";
@@ -22,6 +23,7 @@ import FormRegistrasiSKL from "@/pages/FormRegistrasiSKL.vue";
 
 import StaffDaftarPengajuanSKL from "@/pages/Staff/DaftarPengajuanSKL.vue";
 import WadekDaftarPengajuanSKL from "@/pages/Wadek/DaftarPengajuanSKL.vue";
+import SettingTTD from "@/pages/Wadek/SettingTTD.vue";
 const routes = [
   {
     path: "/login",
@@ -54,24 +56,19 @@ const routes = [
     component: WadekDaftarPengajuanSKL
   },
   {
-    path: "/admin",
-    component: DashboardLayout,
-    redirect: "/admin/ijazah",
+    path: "/wadek",
+    component: DashboardLayout_Wadek,
+    redirect: "/wadek/table",
     children: [
       {
-        path: "dashboard",
+        path: "dashboard_staff",
         name: "Dashboard",
         component: Dashboard
       },
       {
-        path: "ijazah",
-        name: "Membuat Ijazah Baru",
-        component: UserProfile
-      },
-      {
         path: "table",
-        name: "Daftar Berkas",
-        component: TableList
+        name: "Daftar Pengajuan SKL",
+        component: WadekDaftarPengajuanSKL
       },
       {
         path: "icons",
@@ -84,46 +81,9 @@ const routes = [
         component: Notifications
       },
       {
-        path: "transkrip",
-        name: "Membuat Transkrip Baru",
-        component: Transkrip
-      }
-    ]
-  },
-  {
-    path: "/superAdmin",
-    component: DashboardLayout_SA,
-    redirect: "/superAdmin/regisStaff",
-    children: [
-      {
-        path: "dashboard_sa",
-        name: "Dashboard",
-        component: Dashboard
-      },
-      {
-        path: "regisStaff",
-        name: "Registrasi Staff",
-        component: RegisStaff
-      },
-      {
-        path: "regisSuperAdmin",
-        name: "Registrasi Super Admin",
-        component: RegisSuperAdmin
-      },
-      {
-        path: "table",
-        name: "Daftar Berkas",
-        component: TableList
-      },
-      {
-        path: "icons",
-        name: "Icons",
-        component: Icons
-      },
-      {
-        path: "notifications",
-        name: "Notifications",
-        component: Notifications
+        path: "setting",
+        name: "Setting Profile dan TTD",
+        component: SettingTTD
       }
     ]
   },
@@ -139,120 +99,8 @@ const routes = [
       },
       {
         path: "table",
-        name: "Daftar Berkas",
-        component: TableList_TTD
-      },
-      {
-        path: "icons",
-        name: "Icons",
-        component: Icons
-      },
-      {
-        path: "notifications",
-        name: "Notifications",
-        component: Notifications
-      }
-    ]
-  },
-  // kaprodi
-  {
-    path: "/kaprodi",
-    component: DashboardLayout_Staff,
-    redirect: "/kaprodi/table",
-    children: [
-      {
-        path: "dashboard_kaprodi",
-        name: "Dashboard",
-        component: Dashboard
-      },
-      {
-        path: "table",
-        name: "Daftar Berkas",
-        component: TableList_TTD
-      },
-      {
-        path: "icons",
-        name: "Icons",
-        component: Icons
-      },
-      {
-        path: "notifications",
-        name: "Notifications",
-        component: Notifications
-      }
-    ]
-  },
-  // dekan
-  {
-    path: "/dekan",
-    component: DashboardLayout_Staff,
-    redirect: "/dekan/table",
-    children: [
-      {
-        path: "dashboard_dekan",
-        name: "Dashboard",
-        component: Dashboard
-      },
-      {
-        path: "table",
-        name: "Daftar Berkas",
-        component: TableList_TTD
-      },
-      {
-        path: "icons",
-        name: "Icons",
-        component: Icons
-      },
-      {
-        path: "notifications",
-        name: "Notifications",
-        component: Notifications
-      }
-    ]
-  },
-  // warek
-  {
-    path: "/warek",
-    component: DashboardLayout_Staff,
-    redirect: "/warek/table",
-    children: [
-      {
-        path: "dashboard_warek",
-        name: "Dashboard",
-        component: Dashboard
-      },
-      {
-        path: "table",
-        name: "Daftar Berkas",
-        component: TableList_TTD
-      },
-      {
-        path: "icons",
-        name: "Icons",
-        component: Icons
-      },
-      {
-        path: "notifications",
-        name: "Notifications",
-        component: Notifications
-      }
-    ]
-  },
-  // rektor
-  {
-    path: "/rektor",
-    component: DashboardLayout_Staff,
-    redirect: "/rektor/table",
-    children: [
-      {
-        path: "dashboard_rektor",
-        name: "Dashboard",
-        component: Dashboard
-      },
-      {
-        path: "table",
-        name: "Daftar Berkas",
-        component: TableList_TTD
+        name: "Daftar Pengajuan SKL",
+        component: StaffDaftarPengajuanSKL
       },
       {
         path: "icons",
@@ -266,6 +114,192 @@ const routes = [
       }
     ]
   }
+  // {
+  //   path: "/admin",
+  //   component: DashboardLayout,
+  //   redirect: "/admin/ijazah",
+  //   children: [
+  //     {
+  //       path: "dashboard",
+  //       name: "Dashboard",
+  //       component: Dashboard
+  //     },
+  //     {
+  //       path: "ijazah",
+  //       name: "Membuat Ijazah Baru",
+  //       component: UserProfile
+  //     },
+  //     {
+  //       path: "table",
+  //       name: "Daftar Berkas",
+  //       component: TableList
+  //     },
+  //     {
+  //       path: "icons",
+  //       name: "Icons",
+  //       component: Icons
+  //     },
+  //     {
+  //       path: "notifications",
+  //       name: "Notifications",
+  //       component: Notifications
+  //     },
+  //     {
+  //       path: "transkrip",
+  //       name: "Membuat Transkrip Baru",
+  //       component: Transkrip
+  //     }
+  //   ]
+  // },
+  // {
+  //   path: "/superAdmin",
+  //   component: DashboardLayout_SA,
+  //   redirect: "/superAdmin/regisStaff",
+  //   children: [
+  //     {
+  //       path: "dashboard_sa",
+  //       name: "Dashboard",
+  //       component: Dashboard
+  //     },
+  //     {
+  //       path: "regisStaff",
+  //       name: "Registrasi Staff",
+  //       component: RegisStaff
+  //     },
+  //     {
+  //       path: "regisSuperAdmin",
+  //       name: "Registrasi Super Admin",
+  //       component: RegisSuperAdmin
+  //     },
+  //     {
+  //       path: "table",
+  //       name: "Daftar Berkas",
+  //       component: TableList
+  //     },
+  //     {
+  //       path: "icons",
+  //       name: "Icons",
+  //       component: Icons
+  //     },
+  //     {
+  //       path: "notifications",
+  //       name: "Notifications",
+  //       component: Notifications
+  //     }
+  //   ]
+  // },
+  // // kaprodi
+  // {
+  //   path: "/kaprodi",
+  //   component: DashboardLayout_Staff,
+  //   redirect: "/kaprodi/table",
+  //   children: [
+  //     {
+  //       path: "dashboard_kaprodi",
+  //       name: "Dashboard",
+  //       component: Dashboard
+  //     },
+  //     {
+  //       path: "table",
+  //       name: "Daftar Berkas",
+  //       component: TableList_TTD
+  //     },
+  //     {
+  //       path: "icons",
+  //       name: "Icons",
+  //       component: Icons
+  //     },
+  //     {
+  //       path: "notifications",
+  //       name: "Notifications",
+  //       component: Notifications
+  //     }
+  //   ]
+  // },
+  // // dekan
+  // {
+  //   path: "/dekan",
+  //   component: DashboardLayout_Staff,
+  //   redirect: "/dekan/table",
+  //   children: [
+  //     {
+  //       path: "dashboard_dekan",
+  //       name: "Dashboard",
+  //       component: Dashboard
+  //     },
+  //     {
+  //       path: "table",
+  //       name: "Daftar Berkas",
+  //       component: TableList_TTD
+  //     },
+  //     {
+  //       path: "icons",
+  //       name: "Icons",
+  //       component: Icons
+  //     },
+  //     {
+  //       path: "notifications",
+  //       name: "Notifications",
+  //       component: Notifications
+  //     }
+  //   ]
+  // },
+  // // warek
+  // {
+  //   path: "/warek",
+  //   component: DashboardLayout_Staff,
+  //   redirect: "/warek/table",
+  //   children: [
+  //     {
+  //       path: "dashboard_warek",
+  //       name: "Dashboard",
+  //       component: Dashboard
+  //     },
+  //     {
+  //       path: "table",
+  //       name: "Daftar Berkas",
+  //       component: TableList_TTD
+  //     },
+  //     {
+  //       path: "icons",
+  //       name: "Icons",
+  //       component: Icons
+  //     },
+  //     {
+  //       path: "notifications",
+  //       name: "Notifications",
+  //       component: Notifications
+  //     }
+  //   ]
+  // },
+  // // rektor
+  // {
+  //   path: "/rektor",
+  //   component: DashboardLayout_Staff,
+  //   redirect: "/rektor/table",
+  //   children: [
+  //     {
+  //       path: "dashboard_rektor",
+  //       name: "Dashboard",
+  //       component: Dashboard
+  //     },
+  //     {
+  //       path: "table",
+  //       name: "Daftar Berkas",
+  //       component: TableList_TTD
+  //     },
+  //     {
+  //       path: "icons",
+  //       name: "Icons",
+  //       component: Icons
+  //     },
+  //     {
+  //       path: "notifications",
+  //       name: "Notifications",
+  //       component: Notifications
+  //     }
+  //   ]
+  // }
 ];
 
 export default routes;
