@@ -19,7 +19,9 @@
         <input type="text" class="form-control" @input="search" />
       </div>
     </div>
-    <md-button class="md-success md-hue-1" @click="approveAll()"> Setujui Semua </md-button>
+    <md-button class="md-success md-hue-1" @click="showModal()">
+      Tambah Program Studi
+    </md-button>
     <div class="col-md-12">
       <b-table
         striped
@@ -33,35 +35,28 @@
         <template v-slot:cell(no)="row">
           {{ row.index + 1 }}
         </template>
-        <template v-slot:cell(tanggal)>
-            12-09-2021
-        </template>
         <template v-slot:cell(check)="row">
-          <b-checkbox v-model="row.item.kaprodi" disabled> Persetujuan Staff </b-checkbox>
-          <b-checkbox v-model="row.item.dekan" disabled> Persetujuan Wakil Dekan </b-checkbox>
-          <b-checkbox v-model="row.item.warek" disabled> Selesai </b-checkbox>
-          <!-- <b-checkbox v-model="row.item.rektor" disabled> Rektor </b-checkbox> -->
+          <b-checkbox v-model="row.item.kaprodi" disabled> Kaprodi </b-checkbox>
+          <b-checkbox v-model="row.item.dekan" disabled> Dekan </b-checkbox>
+          <b-checkbox v-model="row.item.warek" disabled> Wakil Rektor </b-checkbox>
+          <b-checkbox v-model="row.item.rektor" disabled> Rektor </b-checkbox>
         </template>
-        <template v-slot:cell(download)="row">
-          <md-button
-            class="md-success md-hue-1"
-            :disabled="!row.item.rektor"
-            @click="download(row.item.data)"
-          >
-            Preview
-          </md-button>
-
+        <template v-slot:cell(setting)="row">
+          {{row.index}}
         </template>
         <template v-slot:cell(action)="row">
-          <md-button class="md-success md-hue-1" @click="msg(1, row.item.nim)">
-            Setujui 
+          <md-button class="md-success md-hue-1" @click="edit(row.item)">
+            Edit 
           </md-button>&nbsp;
-          <md-button class="md-warning md-hue-1" @click="msg(1, row.item.nim)">
-            Kembalikan
+          <md-button class="md-danger md-hue-1" @click="del(row.item.nim)">
+            Delete
           </md-button>&nbsp;
-          <md-button class="md-danger md-hue-1" @click="msg(0)">
-            Tolak
-          </md-button>
+          <!-- <md-radio v-model="setting_ttd[row.index]" :value=1 @change=setting(row.item.nim,1)>1</md-radio>
+          <md-radio v-model="setting_ttd[row.index]" :value=2 @change=setting(row.item.nim,2)>2</md-radio>
+          <md-radio v-model="setting_ttd[row.index]" :value=3 @change=setting(row.item.nim,3)>3</md-radio>
+          <md-radio v-model="setting_ttd[row.index]" :value=4 @change=setting(row.item.nim,4)>4</md-radio>
+          <md-radio v-model="setting_ttd[row.index]" :value=5 @change=setting(row.item.nim,5)>5</md-radio> -->
+          &nbsp;
         </template>
       </b-table>
     </div>
@@ -85,7 +80,6 @@
 
 <script>
 import _ from "lodash";
-import swal from "sweetalert";
 
 export default {
   name: "data-table-skl",
@@ -107,6 +101,7 @@ export default {
       sortBy: null,
       sortDesc: false,
       role: 0,
+      setting_ttd: [1,2,3],
     };
   },
   watch: {
@@ -124,8 +119,11 @@ export default {
     },
   },
   methods: {
-    showModal(nim) {
-      this.$emit("modal", nim);
+    showModal() {
+      this.$emit("modal");
+    },
+    edit(data){
+      this.$emit('edit',data)
     },
     loadPerPage(val) {
       this.$emit("per_page", this.meta.per_page);
@@ -133,32 +131,14 @@ export default {
     changePage(val) {
       this.$emit("pagination", val);
     },
-    download(val) {
-      this.$emit("download", val);
-    },
     search: _.debounce(function (e) {
       this.$emit("search", e.target.value);
     }, 500),
-    msg(param, nim) {
-      let text = "";
-      if (param) {
-        // swal({
-        //   title: "Dokumen Diterima",
-        //   icon: "success",
-        // });
-        text = "SKL " + nim + " berhasil ditanda tangani dan dikirimkan..!";
-      } else {
-        // swal({
-        //   title: "Dokumen Ditolak",
-        //   icon: "error",
-        // });
-        text = "Pengajuan SKL ditolak..!";
-      }
-      this.notifyVue(text, true);
-      
+    setting(id,value){
+      this.notifyVue("Setting Saved..!!", true);
     },
-    approveAll() {
-      this.notifyVue("Semua SKL berhasil ditanda tangani dan dikirimkan..!", true);
+    del(email){
+      this.notifyVue('Program Studi Berhasil Dihapus...!!',true)
     },
     notifyVue(text, success) {
       var color = Math.floor(Math.random() * 4 + 1);
@@ -169,11 +149,11 @@ export default {
         verticalAlign: "top",
         type: this.$type[color]
       });
-    },
+    }
   },
   mounted() {
     const user = "user";
     this.role = "role";
-  },
+  }
 };
 </script>

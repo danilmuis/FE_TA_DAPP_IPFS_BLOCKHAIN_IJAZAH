@@ -1,25 +1,37 @@
 <template>
   <div class="content">
     <div>
-      <!-- <b-button @click="modalShow = !modalShow">Open Modal</b-button> -->
-
       <b-modal v-model="modal">
-        Upload Dokumen SKL - {{ nim }}
+        {{modal_title}}
         <md-field>
-          <label></label>
-          <md-file name="file" v-model="file" accept="application/pdf" />
+          <label>Nama Program Studi</label>
+          <md-input v-model="name" name="name" type="text" />
         </md-field>
+        <md-field>
+          <label>Setting TTD </label>
+        </md-field>
+        <md-radio v-model="setting" :value=1 selected>1</md-radio>
+        <md-radio v-model="setting" :value=2>2</md-radio>
+        <md-radio v-model="setting" :value=3>3</md-radio>
+        <md-radio v-model="setting" :value=4>4</md-radio>
+        <md-radio v-model="setting" :value=5>5</md-radio>
+
         <template #modal-footer>
           <div class="w-100">
             <b-button
               variant="success"
               size="lg"
               class="float-right"
-              @click="uploadDocument"
+              @click="addProgramStudy"
             >
-              Upload
+              Simpan
             </b-button>
-            <b-button variant="danger" size="lg" class="float-left" @click="showModal">
+            <b-button
+              variant="danger"
+              size="lg"
+              class="float-left"
+              @click="showModal"
+            >
               Tutup
             </b-button>
           </div>
@@ -30,14 +42,11 @@
       <div class="md-layout-item md-medium-size-100 md-xsmall-size-100 md-size-100">
         <md-card>
           <md-card-header data-background-color="green">
-            <h4 class="title">Daftar Seluruh Pengajuan SKL</h4>
+            <h4 class="title">Daftar Semua Prodi Fakultas xxx</h4>
             <!-- <p class="category">Klik Download untuk mengunduh file</p> -->
           </md-card-header>
           <md-card-content>
-            <!-- <simple-table table-header-color="green"></simple-table> -->
-            <!-- <md-button class="md-raised" :class="[ijazah ? 'md-warning' : '']" @click="changeBerkas" >Ijazah </md-button> -->
-            <!-- <md-button class="md-raised" :class="[!ijazah ? 'md-warning' : '']" @click="changeBerkas" >Transkrip</md-button> -->
-            <div class="md-layout-item md-small-size-100 md-size-40">
+            <!-- <div class="md-layout-item md-small-size-100 md-size-40">
               <multiselect
                 v-model="status"
                 deselect-label="Can't remove this value"
@@ -52,11 +61,12 @@
                   ><strong>{{ option.name }}</strong></template
                 >
               </multiselect>
-            </div>
-            <data-table-skl-staff
+            </div> -->
+            <data-table-skl
               :items="items"
               :fields="fields"
               :meta="meta"
+              @edit="showModal"
               @modal="showModal"
               @per_page="handlePerPage"
               @pagination="handlePagination"
@@ -86,16 +96,20 @@
 <style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
 <script>
 import swal from "sweetalert";
-import { DataTableSKL_staff } from "@/components";
+import { DataTableProdi_staff } from "@/components";
 import { getFile } from "../services";
 import { saveAs } from "file-saver";
 import { getIjazah } from "@/pages/services";
-// import { ModalUpload } from "@/components";
+import { required, email, numeric } from "vuelidate/lib/validators";
 export default {
   components: {
     // SimpleTable
-    "data-table-skl-staff": DataTableSKL_staff,
-    // 'Modal':ModalUpload
+    "data-table-skl": DataTableProdi_staff,
+  },
+  validations: {
+    name: {
+      required,
+    },
   },
   methods: {
     setItems() {
@@ -118,27 +132,6 @@ export default {
         this.per_page * current_page
       );
     },
-    async handleDownload(hash) {
-      for await (const file of this.ipfs.get(hash)) {
-        if (!file.content) continue;
-        const content = [];
-        for await (const chunk of file.content) {
-          content.push(chunk);
-        }
-        let length = 0;
-        content.forEach((item) => {
-          length += item.length;
-        });
-        let mergedArray = new Uint8Array(length);
-        let offset = 0;
-        content.forEach((item) => {
-          mergedArray.set(item, offset);
-          offset += item.length;
-        });
-        var blob = await new Blob([mergedArray], { type: "application/pdf" });
-        saveAs(blob, new Date().getTime() + ".pdf");
-      }
-    },
     handlePerPage(val) {
       this.per_page = val;
       this.setItems();
@@ -157,17 +150,33 @@ export default {
       this.setItems();
       this.items.sortOn(this.sortBy);
     },
-    showModal(nim) {
+    showModal(data) {
+
       this.modal = !this.modal;
-      this.nim = nim;
-      this.file = "";
+      if(!data){
+        this.name = "";
+        this.modal_title = "Tambah Program Studi";
+        this.edit = false;
+      }else{
+        this.name = data.nama;
+        this.modal_title = "Edit Program Studi";
+        this.edit = true;
+      }
     },
-    uploadDocument() {
-      if (!this.file) {
-        this.notifyVue("Pastikan file tidak kosong..!", false);
+    addProgramStudy(){
+      this.$v.$touch();
+      if (this.$v.$invalid) {
+        swal({
+          title: "Silahkan Cek Kembali Form Anda",
+          icon: "error",
+        });
       } else {
-        this.notifyVue("Dokumen berhasil diupload..!", true);
-        this.modal = !this.modal;
+        if(this.edit){
+          this.notifyVue("Perubahan Berhasil Disimpan...!!", true);
+        }else{
+          this.notifyVue("Program Studi Berhasil Disimpan...!!", true);
+        }
+        this.showModal();
       }
     },
     notifyVue(text, success) {
@@ -179,17 +188,14 @@ export default {
         verticalAlign: "top",
         type: this.$type[color]
       });
-    }
+    },
   },
   data() {
     return {
       fields: [
         { key: "no", sortable: false },
-        { key: "nim", sortable: true, label: "NIM" },
-        { key: "nama", sortable: true, label: "Email" },
-        { key: "nomor", sortable: false, label: "Nomor HP" },
-        { key: "download", sortable: false, label: "Tanggal Yudisium" },
-        { key: "check", sortable: false, label: "Status" },
+        { key: "nama", sortable: true, label: "Nama" },
+        { key: "setting", sortable: true, label: "Setting TTD" },
         { key: "action", sortable: false, label: "Action" },
       ],
       items: [],
@@ -199,12 +205,16 @@ export default {
         total: 3,
       },
       options: [
-        { name: "Pemeriksaan Staff", language: "Semua Status" },
-        { name: "Pemeriksaan Wadek", language: "Request SKL baru yg belum mendapatkan persetujuan" },
+        { name: "All", language: "Semua Status" },
+        { name: "New", language: "Request SKL baru yg belum mendapatkan persetujuan" },
         {
-          name: "SKL Dikirimkan",
+          name: "On Process",
           language: "SKL yang sudah di review oleh staff dan sedang di ttd oleh Wadek",
-        }
+        },
+        {
+          name: "Done",
+          language: "SKL yang sudah di TTD Wadek dan dikirimkan ke mahasiswa",
+        },
         // { name: 'Laravel', language: 'PHP', $isDisabled: true },
       ],
       current_page: 1,
@@ -215,10 +225,11 @@ export default {
       data: [],
       ijazah: true,
       status: null,
-      isModalVisible: false,
       modal: false,
-      file: null,
-      nim: "",
+      name: "",
+      setting: 1,
+      modal_title: "",
+      edit: ""
     };
   },
   mounted() {

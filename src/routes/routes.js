@@ -2,6 +2,7 @@ import DashboardLayout from "@/pages/Layout/DashboardLayout.vue";
 import DashboardLayout_SA from "@/pages/Layout/DashboardLayout_SA.vue";
 import DashboardLayout_Staff from "@/pages/Layout/DashboardLayout_Staff.vue";
 import DashboardLayout_Wadek from "@/pages/Layout/DashboardLayout_Wadek.vue";
+import DashboardLayout_Superadmin from "@/pages/Layout/DashboardLayout_Superadmin.vue";
 import Login from "@/pages/Login.vue";
 
 import Dashboard from "@/pages/Dashboard.vue";
@@ -22,8 +23,12 @@ import Page404 from "@/pages/Page404.vue";
 import FormRegistrasiSKL from "@/pages/FormRegistrasiSKL.vue";
 
 import StaffDaftarPengajuanSKL from "@/pages/Staff/DaftarPengajuanSKL.vue";
+import StaffDaftarProdi from "@/pages/Staff/DaftarProdi.vue";
 import WadekDaftarPengajuanSKL from "@/pages/Wadek/DaftarPengajuanSKL.vue";
-import SettingTTD from "@/pages/Wadek/SettingTTD.vue";
+import SettingProfile from "@/pages/SettingProfile.vue";
+import SuperadminAkun from "@/pages/Superadmin/DaftarAkun.vue";
+import SuperadminFakultas from "@/pages/Superadmin/DaftarFakultas.vue";
+
 const routes = [
   {
     path: "/login",
@@ -41,24 +46,24 @@ const routes = [
     component: Page404
   },
   {
-    path: "/registrasi-skl",
+    path: "/register",
     name: "Form Registrasi SKL Mahasiswa",
     component: FormRegistrasiSKL
   },
-  {
-    path: "/staff/daftar-skl",
-    name: "Daftar SKL Mahasiswa",
-    component: StaffDaftarPengajuanSKL
-  },
-  {
-    path: "/wadek/daftar-skl",
-    name: "Daftar SKL Mahasiswa",
-    component: WadekDaftarPengajuanSKL
-  },
+  // {
+  //   path: "/staff/daftar-skl",
+  //   name: "Daftar SKL Mahasiswa",
+  //   component: StaffDaftarPengajuanSKL
+  // },
+  // {
+  //   path: "/wadek/daftar-skl",
+  //   name: "Daftar SKL Mahasiswa",
+  //   component: WadekDaftarPengajuanSKL
+  // },
   {
     path: "/wadek",
     component: DashboardLayout_Wadek,
-    redirect: "/wadek/table",
+    redirect: "/wadek/letters",
     children: [
       {
         path: "dashboard_staff",
@@ -66,7 +71,7 @@ const routes = [
         component: Dashboard
       },
       {
-        path: "table",
+        path: "letters",
         name: "Daftar Pengajuan SKL",
         component: WadekDaftarPengajuanSKL
       },
@@ -81,16 +86,21 @@ const routes = [
         component: Notifications
       },
       {
-        path: "setting",
-        name: "Setting Profile dan TTD",
-        component: SettingTTD
+        path: "profile",
+        name: "Setting Profile",
+        component: SettingProfile
+      },
+      {
+        path: "program/study",
+        name: "Daftar Program Studi",
+        component: StaffDaftarProdi
       }
     ]
   },
   {
-    path: "/staff",
-    component: DashboardLayout_Staff,
-    redirect: "/staff/table",
+    path: "/superadmin",
+    component: DashboardLayout_Superadmin,
+    redirect: "/superadmin/accounts",
     children: [
       {
         path: "dashboard_staff",
@@ -98,9 +108,14 @@ const routes = [
         component: Dashboard
       },
       {
-        path: "table",
-        name: "Daftar Pengajuan SKL",
-        component: StaffDaftarPengajuanSKL
+        path: "faculties",
+        name: "Daftar Fakultas",
+        component: SuperadminFakultas
+      },
+      {
+        path: "accounts",
+        name: "Daftar Semua Akun",
+        component: SuperadminAkun
       },
       {
         path: "icons",
@@ -111,6 +126,48 @@ const routes = [
         path: "notifications",
         name: "Notifications",
         component: Notifications
+      },
+      {
+        path: "profile",
+        name: "Setting Profile",
+        component: SettingProfile
+      }
+    ]
+  },
+  {
+    path: "/staff",
+    component: DashboardLayout_Staff,
+    redirect: "/staff/letters",
+    children: [
+      {
+        path: "dashboard_staff",
+        name: "Dashboard",
+        component: Dashboard
+      },
+      {
+        path: "letters",
+        name: "Daftar Pengajuan SKL",
+        component: StaffDaftarPengajuanSKL
+      },
+      {
+        path: "program/study",
+        name: "Daftar Program Studi",
+        component: StaffDaftarProdi
+      },
+      {
+        path: "icons",
+        name: "Icons",
+        component: Icons
+      },
+      {
+        path: "notifications",
+        name: "Notifications",
+        component: Notifications
+      },
+      {
+        path: "profile",
+        name: "Setting Profile",
+        component: SettingProfile
       }
     ]
   }

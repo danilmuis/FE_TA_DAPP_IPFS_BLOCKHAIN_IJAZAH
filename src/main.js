@@ -59,6 +59,7 @@ import Toasted from 'vue-toasted'
 Vue.use(BootstrapVue);
 Vue.use(IconsPlugin);
 Vue.prototype.$Chartist = Chartist;
+Vue.prototype.$type = ["", "info", "success", "warning", "danger"];
 Vue.use(Vuelidate)
 Vue.use(VueRouter);
 Vue.use(Plugin);
@@ -67,7 +68,6 @@ Vue.use(GlobalComponents);
 Vue.use(GlobalDirectives);
 Vue.use(Notifications);
 Vue.use(Vuesax);
-
 Vue.use(Toasted, {
   duration: 2000,
   position: 'top-right',

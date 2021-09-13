@@ -32,25 +32,29 @@
         <template v-slot:cell(no)="row">
           {{ row.index + 1 }}
         </template>
-        <template v-slot:cell(check)="row">
-          <b-checkbox v-model="row.item.kaprodi" disabled> Kaprodi </b-checkbox>
-          <b-checkbox v-model="row.item.dekan" disabled> Dekan </b-checkbox>
-          <b-checkbox v-model="row.item.warek" disabled> Wakil Rektor </b-checkbox>
-          <b-checkbox v-model="row.item.rektor" disabled> Rektor </b-checkbox>
-        </template>
-        <template v-slot:cell(download)="row">
-          <md-button
+        <template v-slot:cell(download)>
+          <!-- <md-button
             class="md-success md-hue-1"
             :disabled="!row.item.rektor"
             @click="download(row.item.data)"
             >Downloadx</md-button
-          >
+          > -->
+            12-09-2021
+
+        </template>
+        <template v-slot:cell(check)="row">
+          <b-checkbox v-model="row.item.kaprodi" disabled> Persetujuan Staff </b-checkbox>
+          <b-checkbox v-model="row.item.dekan" disabled> Persetujuan Wakil Dekan </b-checkbox>
+          <b-checkbox v-model="row.item.warek" disabled> Selesai </b-checkbox>
+          <!-- <b-checkbox v-model="row.item.rektor" disabled> Rektor </b-checkbox> -->
         </template>
         <template v-slot:cell(action)="row">
-          <md-button class="md-success md-hue-1" @click="showModal(row.item.nim)"
-            >Terima</md-button
-          >&nbsp;
-          <md-button class="md-danger md-hue-1" @click="msg(0)">Tolak</md-button>
+          <md-button class="md-success md-hue-1" @click="showModal(row.item.nim)">
+            Setujui
+          </md-button>&nbsp;
+          <md-button class="md-danger md-hue-1" @click="msg(0)">
+            Tolak
+          </md-button>
         </template>
       </b-table>
     </div>
@@ -122,9 +126,6 @@ export default {
     changePage(val) {
       this.$emit("pagination", val);
     },
-    download(val) {
-      this.$emit("download", val);
-    },
     search: _.debounce(function (e) {
       this.$emit("search", e.target.value);
     }, 500),
@@ -139,11 +140,19 @@ export default {
         //   title: "Dokumen Ditolak",
         //   icon: "error",
         // });
-        this.$toasted.show("Pengajuan SKL ditolak..!", {
-          icon: "delete",
-        });
+        this.notifyVue("Pengajuan SKL ditolak..!", true);
       }
     },
+    notifyVue(text, success) {
+      var color = Math.floor(Math.random() * 4 + 1);
+      this.$notify({
+        message: text,
+        icon: success ? "check" : "close",
+        horizontalAlign: "right",
+        verticalAlign: "top",
+        type: this.$type[color]
+      });
+    }
   },
   mounted() {
     const user = "user";

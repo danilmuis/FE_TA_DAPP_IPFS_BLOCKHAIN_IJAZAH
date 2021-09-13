@@ -7,16 +7,15 @@
       :sidebar-background-image="sidebarBackgroundImage"
     >
       <mobile-menu slot="content"></mobile-menu>
-
-      <sidebar-link to="/staff/letters">
+      <sidebar-link to="/superadmin/accounts">
         <md-icon>content_paste</md-icon>
-        <p>Daftar Pengajuan SKL</p>
+        <p>Daftar Semua Akun</p>
       </sidebar-link>
-      <sidebar-link to="/staff/program/study">
+      <sidebar-link to="/superadmin/faculties">
         <md-icon>content_paste</md-icon>
-        <p>Setting Program Studi</p>
+        <p>Daftar Fakultas</p>
       </sidebar-link>
-      <sidebar-link to="/staff/profile">
+      <sidebar-link to="/superadmin/profile">
         <md-icon>content_paste</md-icon>
         <p>Setting Profile</p>
       </sidebar-link>

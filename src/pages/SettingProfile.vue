@@ -5,15 +5,20 @@
         <form @submit.prevent="register">
           <md-card>
             <md-card-header data-background-color="green">
-              <h4 class="title">Silahkan Lengkapi form dibawah untuk memasukkan ttd</h4>
+              <h4 class="title">Silahkan Lengkapi form dibawah untuk mengubah profile</h4>
               <p class="category"></p>
             </md-card-header>
-
             <md-card-content>
               <div class="md-layout">
                 <div class="md-layout-item md-small-size-100 md-size-100">
                   <md-field>
-                    <label>Nama Lengkap Beserta Gelar</label>
+                    <label>Email</label>
+                    <md-input v-model="email" type="text" disabled></md-input>
+                  </md-field>
+                </div>
+                <div class="md-layout-item md-small-size-100 md-size-100">
+                  <md-field>
+                    <label>Nama Lengkap</label>
                     <md-input
                       v-bind:style="[$v.nama.$error && displayError ? error : '']"
                       v-model.trim="$v.nama.$model"
@@ -27,7 +32,30 @@
                 </div>
                 <div class="md-layout-item md-small-size-100 md-size-100">
                   <md-field>
-                    <label>Gambar TTD</label>
+                    <label>Password</label>
+                    <md-input
+                      v-model="password"
+                      name="password"
+                      type="password"
+                    ></md-input>
+                  </md-field>
+                </div>
+                <div
+                  class="md-layout-item md-small-size-100 md-size-100"
+                  v-if="password != ''"
+                >
+                  <md-field>
+                    <label>Ketik Ulang Password</label>
+                    <md-input
+                      v-model="re_password"
+                      name="re_password"
+                      type="password"
+                    ></md-input>
+                  </md-field>
+                </div>
+                <div class="md-layout-item md-small-size-100 md-size-100">
+                  <md-field>
+                    <label>Upload TTD</label>
                     <md-file
                       name="ttd"
                       v-model="label_ttd"
@@ -35,9 +63,6 @@
                       v-on:change="previewImage($event)"
                     />
                   </md-field>
-                  <p class="error-msg" v-if="!$v.ttd.required && displayError">
-                    Form harus diisi
-                  </p>
                 </div>
                 <div class="md-layout-item md-small-size-100 md-size-100">
                   <md-card>
@@ -55,7 +80,7 @@
 
                 <div class="md-layout-item md-size-100 text-right">
                   <md-button class="md-raised md-success" type="submit">
-                    Simpan Pengaturan
+                    Simpan
                   </md-button>
                 </div>
               </div>
@@ -67,9 +92,9 @@
   </div>
 </template>
 <script>
-import { regisStaff } from "../services";
+import { regisStaff } from "./services";
 import { required, email, numeric } from "vuelidate/lib/validators";
-import { passwordLength, alphaSpace, alphaNumeric } from "../validators";
+import { passwordLength, alphaSpace, alphaNumeric } from "./validators";
 import swal from "sweetalert";
 export default {
   name: "input-transkrip-form",
@@ -87,6 +112,9 @@ export default {
         role: "",
       },
       nama: "",
+      email: "email_email@gmail.com",
+      password: "",
+      re_password: "",
       ttdImage: null,
       ttd: "",
       label_ttd: "",
@@ -96,6 +124,7 @@ export default {
         "border-color": "#9c27b0 !important",
         "border-style": "double",
       },
+      
     };
   },
 
@@ -103,13 +132,19 @@ export default {
     nama: {
       required,
     },
-    ttd: {
-      required,
-    },
   },
   methods: {
     register() {
       this.$v.$touch();
+      if (this.password != "") {
+        if (this.password != this.re_password) {
+          swal({
+            title: "Silahkan Cek Kembali Form Anda",
+            icon: "error",
+          });
+          return;
+        }
+      }
       if (this.$v.$invalid) {
         this.displayError = true;
         swal({
@@ -124,7 +159,7 @@ export default {
         //send logic here
 
         loading.close();
-        this.$toasted.show("Setting Updated..!");
+        this.notifyVue("Setting Updated..!", true);
       }
       // regisStaff({
       //   email: this.regisData.email,
@@ -147,6 +182,16 @@ export default {
       //     icon: "error",
       //   });
       // });
+    },
+    notifyVue(text, success) {
+      var color = Math.floor(Math.random() * 4 + 1);
+      this.$notify({
+        message: text,
+        icon: success ? "check" : "close",
+        horizontalAlign: "right",
+        verticalAlign: "top",
+        type: this.$type[color]
+      });
     },
     previewImage(event) {
       const file = event.target.files[0];

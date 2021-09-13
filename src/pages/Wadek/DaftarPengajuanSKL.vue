@@ -90,10 +90,6 @@ export default {
         this.per_page * current_page
       );
     },
-    changeBerkas() {
-      this.ijazah = !this.ijazah;
-      this.setItems();
-    },
     async handleDownload(hash) {
       for await (const file of this.ipfs.get(hash)) {
         if (!file.content) continue;
@@ -112,7 +108,10 @@ export default {
           offset += item.length;
         });
         var blob = await new Blob([mergedArray], { type: "application/pdf" });
-        saveAs(blob, new Date().getTime() + ".pdf");
+        console.log(blob);
+        // saveAs(blob, new Date().getTime() + ".pdf");
+        var fileURL = URL.createObjectURL(blob);
+        window.open(fileURL);
       }
     },
     handlePerPage(val) {
@@ -140,9 +139,10 @@ export default {
         { key: "no", sortable: false },
         { key: "nim", sortable: true, label: "NIM" },
         { key: "nama", sortable: true, label: "Email" },
-        // {key: 'nomor', sortable: false, label: 'Nomor'},
+        { key: "nomor", sortable: false, label: "Nomor HP" },
+        { key: "tanggal", sortable: false, label: "Tanggal Yudisium" },
         { key: "check", sortable: false, label: "Status" },
-        { key: "download", sortable: false, label: "Dokumen" },
+        { key: "download", sortable: false, label: "Preview Dokumen" },
         { key: "action", sortable: false, label: "Action" },
       ],
       items: [],
@@ -152,16 +152,12 @@ export default {
         total: 3,
       },
       options: [
-        { name: "All", language: "Semua Status" },
-        { name: "New", language: "Request SKL baru yg belum mendapatkan persetujuan" },
+        { name: "Pemeriksaan Staff", language: "Semua Status" },
+        { name: "Pemeriksaan Wadek", language: "Request SKL baru yg belum mendapatkan persetujuan" },
         {
-          name: "On Process",
+          name: "SKL Dikirimkan",
           language: "SKL yang sudah di review oleh staff dan sedang di ttd oleh Wadek",
-        },
-        {
-          name: "Done",
-          language: "SKL yang sudah di TTD Wadek dan dikirimkan ke mahasiswa",
-        },
+        }
         // { name: 'Laravel', language: 'PHP', $isDisabled: true },
       ],
       current_page: 1,

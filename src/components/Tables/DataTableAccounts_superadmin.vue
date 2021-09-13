@@ -19,7 +19,9 @@
         <input type="text" class="form-control" @input="search" />
       </div>
     </div>
-    <md-button class="md-success md-hue-1" @click="approveAll()"> Setujui Semua </md-button>
+    <md-button class="md-success md-hue-1" @click="showModal()">
+      Register Akun Baru
+    </md-button>
     <div class="col-md-12">
       <b-table
         striped
@@ -33,35 +35,25 @@
         <template v-slot:cell(no)="row">
           {{ row.index + 1 }}
         </template>
-        <template v-slot:cell(tanggal)>
-            12-09-2021
-        </template>
-        <template v-slot:cell(check)="row">
-          <b-checkbox v-model="row.item.kaprodi" disabled> Persetujuan Staff </b-checkbox>
-          <b-checkbox v-model="row.item.dekan" disabled> Persetujuan Wakil Dekan </b-checkbox>
-          <b-checkbox v-model="row.item.warek" disabled> Selesai </b-checkbox>
-          <!-- <b-checkbox v-model="row.item.rektor" disabled> Rektor </b-checkbox> -->
+        <template v-slot:cell(check)>
+          <!-- <b-checkbox v-model="row.item.kaprodi" disabled> Kaprodi </b-checkbox>
+          <b-checkbox v-model="row.item.dekan" disabled> Dekan </b-checkbox>
+          <b-checkbox v-model="row.item.warek" disabled> Wakil Rektor </b-checkbox>
+          <b-checkbox v-model="row.item.rektor" disabled> Rektor </b-checkbox> -->
+          Fakultas Informatika
         </template>
         <template v-slot:cell(download)="row">
-          <md-button
-            class="md-success md-hue-1"
-            :disabled="!row.item.rektor"
-            @click="download(row.item.data)"
-          >
-            Preview
-          </md-button>
-
+          <div v-if="row.index == 0">Superadmin</div>
+          <div v-if="row.index == 1">Staff</div>
+          <div v-if="row.index == 2">Wakil Dekan</div>
         </template>
         <template v-slot:cell(action)="row">
-          <md-button class="md-success md-hue-1" @click="msg(1, row.item.nim)">
-            Setujui 
+          <md-button class="md-success md-hue-1" @click="edit(row.item)">
+            Edit 
           </md-button>&nbsp;
-          <md-button class="md-warning md-hue-1" @click="msg(1, row.item.nim)">
-            Kembalikan
+          <md-button class="md-danger md-hue-1" @click="del(row.item.nim)">
+            Delete
           </md-button>&nbsp;
-          <md-button class="md-danger md-hue-1" @click="msg(0)">
-            Tolak
-          </md-button>
         </template>
       </b-table>
     </div>
@@ -124,8 +116,8 @@ export default {
     },
   },
   methods: {
-    showModal(nim) {
-      this.$emit("modal", nim);
+    showModal() {
+      this.$emit("modal");
     },
     loadPerPage(val) {
       this.$emit("per_page", this.meta.per_page);
@@ -133,33 +125,9 @@ export default {
     changePage(val) {
       this.$emit("pagination", val);
     },
-    download(val) {
-      this.$emit("download", val);
-    },
     search: _.debounce(function (e) {
       this.$emit("search", e.target.value);
     }, 500),
-    msg(param, nim) {
-      let text = "";
-      if (param) {
-        // swal({
-        //   title: "Dokumen Diterima",
-        //   icon: "success",
-        // });
-        text = "SKL " + nim + " berhasil ditanda tangani dan dikirimkan..!";
-      } else {
-        // swal({
-        //   title: "Dokumen Ditolak",
-        //   icon: "error",
-        // });
-        text = "Pengajuan SKL ditolak..!";
-      }
-      this.notifyVue(text, true);
-      
-    },
-    approveAll() {
-      this.notifyVue("Semua SKL berhasil ditanda tangani dan dikirimkan..!", true);
-    },
     notifyVue(text, success) {
       var color = Math.floor(Math.random() * 4 + 1);
       this.$notify({
@@ -170,6 +138,13 @@ export default {
         type: this.$type[color]
       });
     },
+    del(email){
+      this.notifyVue('Akun Berhasil Dihapus...!!',true)
+    },
+    edit(data){
+      // this.notifyVue('Akun '+email+' Diedit',true)
+      this.$emit('edit',data);
+    }
   },
   mounted() {
     const user = "user";

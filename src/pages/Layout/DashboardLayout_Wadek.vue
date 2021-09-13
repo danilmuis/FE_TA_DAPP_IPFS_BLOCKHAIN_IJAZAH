@@ -8,13 +8,17 @@
     >
       <mobile-menu slot="content"></mobile-menu>
 
-      <sidebar-link to="/wadek/table">
+      <sidebar-link to="/wadek/letters">
         <md-icon>content_paste</md-icon>
         <p>Daftar Pengajuan SKL</p>
       </sidebar-link>
-      <sidebar-link to="/wadek/setting">
+      <sidebar-link to="/wadek/program/study">
         <md-icon>content_paste</md-icon>
-        <p>Setting Profile dan TTD</p>
+        <p>Setting Program Studi</p>
+      </sidebar-link>
+      <sidebar-link to="/wadek/profile">
+        <md-icon>content_paste</md-icon>
+        <p>Setting Profile</p>
       </sidebar-link>
     </side-bar>
 
